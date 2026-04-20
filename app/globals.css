@@ -1,26 +1,97 @@
 @import "tailwindcss";
 
+/* =========================
+   VARIÁVEIS GLOBAIS
+========================= */
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0f172a;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
+/* DARK MODE (já preparado) */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #020617;
+    --foreground: #e2e8f0;
   }
+}
+
+/* =========================
+   RESET + BASE
+========================= */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* =========================
+   PADRÃO DE TEXTO
+========================= */
+h1, h2, h3 {
+  letter-spacing: -0.02em;
+}
+
+/* =========================
+   CONTAINER PADRÃO
+========================= */
+.container-custom {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* =========================
+   BOTÕES PADRÃO
+========================= */
+.btn-primary {
+  @apply bg-cyan-500 text-slate-900 font-semibold px-6 py-3 rounded-xl transition;
+}
+
+.btn-primary:hover {
+  @apply bg-cyan-400 scale-[1.03];
+}
+
+.btn-secondary {
+  @apply border border-slate-300 px-6 py-3 rounded-xl font-semibold transition;
+}
+
+.btn-secondary:hover {
+  @apply bg-slate-100;
+}
+
+/* =========================
+   CARDS PADRÃO
+========================= */
+.card {
+  @apply rounded-2xl border border-slate-200 bg-white p-8 shadow-sm transition;
+}
+
+.card:hover {
+  @apply -translate-y-1 shadow-md;
+}
+
+/* =========================
+   ESPAÇAMENTO PADRÃO
+========================= */
+.section-spacing {
+  padding-top: 96px;
+  padding-bottom: 96px;
+}
+
+/* =========================
+   IMAGENS
+========================= */
+img {
+  max-width: 100%;
+  height: auto;
 }
