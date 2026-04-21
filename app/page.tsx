@@ -55,30 +55,37 @@ export default function Home() {
     "Empresas que precisam estruturar ou modernizar a TI",
   ];
 
+  const quickPoints = [
+    "Atendimento a pequenas e médias empresas",
+    "Suporte remoto e orientação inicial",
+    "Infraestrutura, segurança e continuidade",
+  ];
+
   return (
     <main className="bg-slate-950 text-white">
       <section className="border-b border-white/10">
-        <div className="mx-auto max-w-7xl px-6 py-20 md:px-10 md:py-28">
+        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 md:px-10 md:py-24">
           <FadeIn>
-            <div className="max-w-4xl">
-              <span className="mb-4 inline-block rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-1 text-sm text-cyan-300">
+            <div className="max-w-5xl">
+              <span className="mb-4 inline-flex rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300 sm:text-sm">
                 Astreon Tech
               </span>
 
-              <h1 className="text-4xl font-bold leading-tight md:text-6xl">
-                Soluções em TI, Infraestrutura e Segurança da Informação para empresas
+              <h1 className="max-w-4xl text-3xl font-bold leading-tight sm:text-4xl md:text-5xl xl:text-6xl">
+                TI, infraestrutura e segurança para pequenas e médias empresas
+                que precisam de estabilidade e suporte confiável
               </h1>
 
-              <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300 md:text-xl">
-                A Astreon Tech ajuda pequenas e médias empresas com suporte técnico,
-                redes, segurança, servidores e consultoria especializada para manter
-                o ambiente estável, produtivo e protegido.
+              <p className="mt-6 max-w-3xl text-base leading-7 text-slate-300 sm:text-lg sm:leading-8 md:text-xl">
+                A Astreon Tech ajuda empresas a reduzir falhas, organizar o
+                ambiente de TI e reforçar a segurança da operação com uma
+                atuação prática, consultiva e voltada para resultado.
               </p>
 
-              <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Link
                   href="/contato"
-                  className="rounded-2xl bg-cyan-500 px-6 py-3 text-center font-semibold text-slate-950 transition hover:bg-cyan-400"
+                  className="rounded-2xl bg-cyan-500 px-6 py-3 text-center text-sm font-semibold text-slate-950 transition hover:bg-cyan-400 sm:text-base"
                 >
                   Solicitar diagnóstico
                 </Link>
@@ -87,14 +94,14 @@ export default function Home() {
                   href={whatsappLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-2xl border border-white/20 px-6 py-3 text-center font-semibold text-white transition hover:bg-white/10"
+                  className="rounded-2xl border border-white/20 px-6 py-3 text-center text-sm font-semibold text-white transition hover:bg-white/10 sm:text-base"
                 >
                   Falar no WhatsApp
                 </a>
 
                 <a
                   href={emailLink}
-                  className="rounded-2xl border border-cyan-400 px-6 py-3 text-center font-semibold text-cyan-300 transition hover:bg-cyan-400/10"
+                  className="rounded-2xl border border-cyan-400 px-6 py-3 text-center text-sm font-semibold text-cyan-300 transition hover:bg-cyan-400/10 sm:text-base"
                 >
                   Enviar e-mail
                 </a>
@@ -104,19 +111,36 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-16 md:px-10">
+      <section className="border-b border-white/10 bg-white/5">
+        <div className="mx-auto max-w-7xl px-5 py-8 sm:px-6 md:px-10">
+          <FadeIn>
+            <div className="grid gap-4 md:grid-cols-3">
+              {quickPoints.map((item) => (
+                <div
+                  key={item}
+                  className="rounded-2xl border border-white/10 bg-slate-900/60 px-5 py-4 text-sm font-medium text-slate-200"
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-5 py-14 sm:px-6 md:px-10 md:py-16">
         <FadeIn>
           <div className="mb-10 max-w-3xl">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">
               Serviços
             </p>
-            <h2 className="mt-3 text-3xl font-bold md:text-4xl">
+            <h2 className="mt-3 text-2xl font-bold sm:text-3xl md:text-4xl">
               Soluções pensadas para a rotina e o crescimento da sua empresa
             </h2>
-            <p className="mt-4 text-slate-300">
+            <p className="mt-4 text-base leading-7 text-slate-300 sm:text-lg">
               Atuamos com foco em suporte, infraestrutura, segurança e projetos
-              para reduzir falhas, melhorar a operação e aumentar a confiabilidade
-              do ambiente de TI.
+              para reduzir falhas, melhorar a operação e aumentar a
+              confiabilidade do ambiente de TI.
             </p>
           </div>
 
@@ -124,10 +148,18 @@ export default function Home() {
             {services.map((service) => (
               <div
                 key={service.title}
-                className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-lg shadow-black/20"
+                className="flex h-full flex-col rounded-3xl border border-white/10 bg-white/5 p-6 shadow-lg shadow-black/20"
               >
                 <h3 className="text-xl font-semibold">{service.title}</h3>
-                <p className="mt-3 leading-7 text-slate-300">{service.description}</p>
+                <p className="mt-3 flex-1 leading-7 text-slate-300">
+                  {service.description}
+                </p>
+                <Link
+                  href="/servicos"
+                  className="mt-6 inline-flex text-sm font-semibold text-cyan-300 transition hover:text-cyan-200"
+                >
+                  Ver detalhes do serviço
+                </Link>
               </div>
             ))}
           </div>
@@ -135,20 +167,20 @@ export default function Home() {
       </section>
 
       <section className="border-y border-white/10 bg-white/5">
-        <div className="mx-auto max-w-7xl px-6 py-16 md:px-10">
+        <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6 md:px-10 md:py-16">
           <FadeIn>
-            <div className="grid gap-10 lg:grid-cols-2">
+            <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
               <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">
                   Diferenciais
                 </p>
-                <h2 className="mt-3 text-3xl font-bold md:text-4xl">
+                <h2 className="mt-3 text-2xl font-bold sm:text-3xl md:text-4xl">
                   Por que escolher a Astreon Tech?
                 </h2>
-                <p className="mt-4 text-slate-300">
-                  Trabalhamos com abordagem prática e consultiva, entendendo o cenário
-                  da empresa para propor soluções viáveis, seguras e alinhadas à rotina
-                  operacional.
+                <p className="mt-4 text-base leading-7 text-slate-300 sm:text-lg">
+                  Trabalhamos com uma abordagem prática e consultiva, entendendo
+                  o cenário da empresa para propor soluções viáveis, seguras e
+                  alinhadas à rotina operacional.
                 </p>
               </div>
 
@@ -167,17 +199,17 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-16 md:px-10">
+      <section className="mx-auto max-w-7xl px-5 py-14 sm:px-6 md:px-10 md:py-16">
         <FadeIn>
-          <div className="grid gap-10 lg:grid-cols-2">
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">
                 Para quem atendemos
               </p>
-              <h2 className="mt-3 text-3xl font-bold md:text-4xl">
+              <h2 className="mt-3 text-2xl font-bold sm:text-3xl md:text-4xl">
                 TI com foco em resultado, continuidade e segurança
               </h2>
-              <p className="mt-4 text-slate-300">
+              <p className="mt-4 text-base leading-7 text-slate-300 sm:text-lg">
                 Atendemos empresas que precisam estruturar melhor a tecnologia,
                 corrigir falhas recorrentes, melhorar a segurança e ganhar mais
                 estabilidade na operação.
@@ -199,21 +231,22 @@ export default function Home() {
       </section>
 
       <section className="border-t border-white/10 bg-cyan-500/10">
-        <div className="mx-auto max-w-7xl px-6 py-16 md:px-10">
+        <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6 md:px-10 md:py-16">
           <FadeIn>
-            <div className="rounded-3xl border border-cyan-400/20 bg-slate-900/80 p-8 md:p-10">
-              <h2 className="text-3xl font-bold md:text-4xl">
+            <div className="rounded-3xl border border-cyan-400/20 bg-slate-900/80 p-6 sm:p-8 md:p-10">
+              <h2 className="max-w-3xl text-2xl font-bold sm:text-3xl md:text-4xl">
                 Precisa de apoio em TI, infraestrutura ou segurança?
               </h2>
-              <p className="mt-4 max-w-3xl text-lg text-slate-300">
-                Solicite um diagnóstico inicial e entenda como a Astreon Tech pode
-                ajudar sua empresa a ganhar mais estabilidade, proteção e eficiência.
+              <p className="mt-4 max-w-3xl text-base leading-7 text-slate-300 sm:text-lg">
+                Solicite um diagnóstico inicial e entenda como a Astreon Tech
+                pode ajudar sua empresa a ganhar mais estabilidade, proteção e
+                eficiência.
               </p>
 
-              <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Link
                   href="/contato"
-                  className="rounded-2xl bg-cyan-500 px-6 py-3 text-center font-semibold text-slate-950 transition hover:bg-cyan-400"
+                  className="rounded-2xl bg-cyan-500 px-6 py-3 text-center text-sm font-semibold text-slate-950 transition hover:bg-cyan-400 sm:text-base"
                 >
                   Solicitar diagnóstico
                 </Link>
@@ -222,14 +255,14 @@ export default function Home() {
                   href={whatsappLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-2xl border border-white/20 px-6 py-3 text-center font-semibold text-white transition hover:bg-white/10"
+                  className="rounded-2xl border border-white/20 px-6 py-3 text-center text-sm font-semibold text-white transition hover:bg-white/10 sm:text-base"
                 >
                   Chamar no WhatsApp
                 </a>
 
                 <a
                   href={emailLink}
-                  className="rounded-2xl border border-cyan-400 px-6 py-3 text-center font-semibold text-cyan-300 transition hover:bg-cyan-400/10"
+                  className="rounded-2xl border border-cyan-400 px-6 py-3 text-center text-sm font-semibold text-cyan-300 transition hover:bg-cyan-400/10 sm:text-base"
                 >
                   contato@astreontech.com.br
                 </a>
@@ -240,11 +273,11 @@ export default function Home() {
       </section>
 
       <section className="border-t border-white/10">
-        <div className="mx-auto max-w-7xl px-6 py-10 md:px-10">
+        <div className="mx-auto max-w-7xl px-5 py-10 sm:px-6 md:px-10">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div>
               <p className="text-lg font-semibold">Astreon Tech</p>
-              <p className="text-slate-400">
+              <p className="text-sm text-slate-400 sm:text-base">
                 Soluções em TI, Infraestrutura e Segurança da Informação
               </p>
             </div>
@@ -258,7 +291,7 @@ export default function Home() {
               </a>
               <a
                 href={emailLink}
-                className="transition hover:text-cyan-300"
+                className="break-all transition hover:text-cyan-300 sm:break-normal"
               >
                 contato@astreontech.com.br
               </a>
