@@ -17,70 +17,92 @@ export default function Servicos() {
       problem:
         "Sua empresa não tem uma estrutura organizada ou sofre com instabilidade?",
       solution:
-        "Implantamos e organizamos redes, servidores e toda a base de TI para garantir desempenho, segurança e continuidade operacional.",
+        "Implantamos e organizamos redes, servidores e a base de TI para garantir desempenho, segurança e continuidade operacional.",
     },
     {
       title: "Segurança da Informação",
       problem:
-        "Preocupado com vazamento de dados, ataques ou falhas de segurança?",
+        "Preocupado com vazamento de dados, acessos indevidos ou falhas de segurança?",
       solution:
-        "Aplicamos boas práticas, controles e ajustes no ambiente para reduzir riscos e proteger as informações da sua empresa.",
+        "Aplicamos boas práticas, controles e ajustes no ambiente para reduzir riscos, reforçar a proteção e melhorar a segurança da operação.",
     },
     {
       title: "Redes e Firewall",
       problem:
-        "Sua rede é lenta, instável ou não tem controle de acesso adequado?",
+        "Sua rede é lenta, instável ou não possui controle adequado de acessos?",
       solution:
-        "Configuramos e otimizamos redes e firewall para melhorar desempenho, segurança e controle do ambiente.",
+        "Configuramos e otimizamos redes e firewall para melhorar desempenho, proteção perimetral e controle do ambiente.",
     },
     {
       title: "VICIdial e Telefonia",
       problem:
-        "Seu call center apresenta falhas, quedas ou baixa performance?",
+        "Seu call center apresenta falhas, quedas ou baixa performance operacional?",
       solution:
-        "Implantamos, ajustamos e mantemos ambientes de discagem para garantir operação estável e eficiente.",
+        "Implantamos, ajustamos e mantemos ambientes de discagem e telefonia para garantir uma operação mais estável e eficiente.",
     },
     {
       title: "Consultoria e Projetos",
       problem:
         "Não sabe por onde começar para melhorar a TI da sua empresa?",
       solution:
-        "Analisamos o cenário atual e indicamos melhorias práticas para evolução do ambiente com foco em resultado.",
+        "Analisamos o cenário atual, priorizamos melhorias e indicamos um plano de ação prático para evolução do ambiente.",
+    },
+  ];
+
+  const steps = [
+    {
+      title: "1. Entendimento do cenário",
+      description:
+        "Conversamos para entender a necessidade, os problemas atuais e o impacto na operação da empresa.",
+    },
+    {
+      title: "2. Diagnóstico inicial",
+      description:
+        "Avaliamos o cenário e identificamos os principais pontos de atenção, risco ou melhoria.",
+    },
+    {
+      title: "3. Recomendação",
+      description:
+        "Indicamos o melhor caminho para correção, estruturação ou evolução do ambiente.",
+    },
+    {
+      title: "4. Execução ou suporte",
+      description:
+        "Seguimos com a implementação, ajustes ou apoio técnico conforme a necessidade do negócio.",
     },
   ];
 
   return (
     <main className="bg-slate-950 text-white">
-      {/* HERO */}
-      <section className="mx-auto max-w-6xl px-6 py-20 text-center">
-        <h1 className="text-4xl font-bold md:text-5xl">
+      <section className="mx-auto max-w-6xl px-5 py-16 text-center sm:px-6 md:px-10 md:py-20">
+        <h1 className="text-3xl font-bold sm:text-4xl md:text-5xl">
           Serviços de TI pensados para resolver problemas reais da sua empresa
         </h1>
 
-        <p className="mt-6 text-lg text-slate-300">
-          Atuamos diretamente nos pontos críticos da sua operação para melhorar
-          desempenho, reduzir falhas e aumentar a segurança do seu ambiente.
+        <p className="mx-auto mt-6 max-w-3xl text-base leading-7 text-slate-300 sm:text-lg sm:leading-8">
+          Atuamos diretamente nos pontos críticos da operação para melhorar
+          desempenho, reduzir falhas e aumentar a segurança do ambiente
+          tecnológico.
         </p>
       </section>
 
-      {/* LISTA DE SERVIÇOS */}
-      <section className="mx-auto max-w-6xl px-6 pb-16">
-        <div className="grid gap-8 md:grid-cols-2">
+      <section className="mx-auto max-w-6xl px-5 pb-14 sm:px-6 md:px-10 md:pb-16">
+        <div className="grid gap-6 md:grid-cols-2">
           {services.map((service) => (
             <div
               key={service.title}
-              className="rounded-3xl border border-white/10 bg-white/5 p-8"
+              className="flex h-full flex-col rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8"
             >
               <h2 className="text-2xl font-semibold text-cyan-400">
                 {service.title}
               </h2>
 
-              <p className="mt-4 text-slate-300">
+              <p className="mt-4 text-sm leading-7 text-slate-300 sm:text-base">
                 <strong className="text-white">Problema:</strong>{" "}
                 {service.problem}
               </p>
 
-              <p className="mt-3 text-slate-300">
+              <p className="mt-3 flex-1 text-sm leading-7 text-slate-300 sm:text-base">
                 <strong className="text-white">Solução:</strong>{" "}
                 {service.solution}
               </p>
@@ -89,7 +111,7 @@ export default function Servicos() {
                 href={whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-6 inline-block rounded-xl bg-cyan-500 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-400"
+                className="mt-6 inline-block rounded-xl bg-cyan-500 px-6 py-3 text-center text-sm font-semibold text-slate-950 transition hover:bg-cyan-400 sm:text-base"
               >
                 Falar sobre este serviço
               </a>
@@ -98,22 +120,52 @@ export default function Servicos() {
         </div>
       </section>
 
-      {/* CTA FINAL */}
-      <section className="border-t border-white/10 bg-white/5">
-        <div className="mx-auto max-w-5xl px-6 py-16 text-center">
-          <h2 className="text-3xl font-bold">
+      <section className="border-y border-white/10 bg-white/5">
+        <div className="mx-auto max-w-6xl px-5 py-14 sm:px-6 md:px-10 md:py-16">
+          <div className="max-w-3xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">
+              Como funciona
+            </p>
+            <h2 className="mt-3 text-2xl font-bold sm:text-3xl md:text-4xl">
+              Um processo simples, claro e objetivo
+            </h2>
+            <p className="mt-4 text-base leading-7 text-slate-300 sm:text-lg">
+              Trabalhamos de forma prática para entender a necessidade da sua
+              empresa, orientar o melhor caminho e apoiar a execução.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {steps.map((step) => (
+              <div
+                key={step.title}
+                className="rounded-3xl border border-white/10 bg-slate-900/70 p-6"
+              >
+                <h3 className="text-lg font-semibold text-white">{step.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-slate-300 sm:text-base">
+                  {step.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-cyan-500/10">
+        <div className="mx-auto max-w-5xl px-5 py-14 text-center sm:px-6 md:px-10 md:py-16">
+          <h2 className="text-2xl font-bold sm:text-3xl md:text-4xl">
             Sua empresa não precisa continuar enfrentando problemas de TI
           </h2>
 
-          <p className="mt-4 text-slate-300">
-            Quanto antes você agir, menor o impacto na sua operação. Solicite um
+          <p className="mx-auto mt-4 max-w-3xl text-base leading-7 text-slate-300 sm:text-lg">
+            Quanto antes você agir, menor o impacto na operação. Solicite um
             diagnóstico e entenda exatamente o que pode ser melhorado.
           </p>
 
-          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
             <Link
               href="/contato"
-              className="rounded-2xl bg-cyan-500 px-8 py-3 font-semibold text-slate-950 transition hover:bg-cyan-400"
+              className="rounded-2xl bg-cyan-500 px-8 py-3 text-center text-sm font-semibold text-slate-950 transition hover:bg-cyan-400 sm:text-base"
             >
               Solicitar diagnóstico
             </Link>
@@ -122,7 +174,7 @@ export default function Servicos() {
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-2xl border border-white/20 px-8 py-3 font-semibold text-white transition hover:bg-white/10"
+              className="rounded-2xl border border-white/20 px-8 py-3 text-center text-sm font-semibold text-white transition hover:bg-white/10 sm:text-base"
             >
               Falar no WhatsApp
             </a>
