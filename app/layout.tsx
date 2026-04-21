@@ -10,10 +10,56 @@ const inter = Inter({
   display: "swap",
 });
 
+const siteUrl = "https://www.astreontech.com.br";
+const whatsappLink =
+  "https://wa.me/551132302090?text=Ol%C3%A1%2C%20vi%20o%20site%20da%20Astreon%20Tech%20e%20gostaria%20de%20um%20diagn%C3%B3stico%20inicial.";
+const email = "contato@astreontech.com.br";
+
 export const metadata: Metadata = {
-  title: "Astreon Tech | Suporte de TI, Cibersegurança e Infraestrutura",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Astreon Tech | Soluções em TI, Infraestrutura e Segurança da Informação",
+    template: "%s | Astreon Tech",
+  },
   description:
-    "A Astreon Tech oferece suporte de TI, consultoria em infraestrutura, redes, firewall, servidores e segurança da informação para empresas.",
+    "A Astreon Tech oferece suporte de TI, infraestrutura, redes, firewall, servidores e segurança da informação para pequenas e médias empresas.",
+  keywords: [
+    "suporte de TI",
+    "empresa de TI",
+    "infraestrutura de TI",
+    "segurança da informação",
+    "consultoria TI",
+    "suporte técnico empresarial",
+    "firewall empresa",
+    "redes corporativas",
+    "servidores",
+    "cibersegurança",
+  ],
+  authors: [{ name: "Astreon Tech" }],
+  creator: "Astreon Tech",
+  publisher: "Astreon Tech",
+  applicationName: "Astreon Tech",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Astreon Tech | Soluções em TI, Infraestrutura e Segurança da Informação",
+    description:
+      "Suporte de TI, infraestrutura, redes, firewall, servidores e segurança da informação para empresas.",
+    url: siteUrl,
+    siteName: "Astreon Tech",
+    locale: "pt_BR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Astreon Tech | Soluções em TI, Infraestrutura e Segurança da Informação",
+    description:
+      "Suporte de TI, infraestrutura, redes, firewall, servidores e segurança da informação para empresas.",
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
@@ -29,10 +75,10 @@ export default function RootLayout({
         <div className="flex min-h-screen flex-col">
           <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-sm">
             <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-6">
-              <Link href="/" className="flex items-center">
+              <Link href="/" className="flex items-center" aria-label="Ir para a página inicial da Astreon Tech">
                 <Image
                   src="/images/logo-astreon.png"
-                  alt="Astreon Tech"
+                  alt="Logo da Astreon Tech"
                   width={260}
                   height={70}
                   className="h-12 w-auto md:h-14"
@@ -67,12 +113,10 @@ export default function RootLayout({
             </div>
           </header>
 
-          <main className="flex-1">
-            {children}
-          </main>
+          <main className="flex-1">{children}</main>
 
           <a
-            href="https://wa.me/551132302090"
+            href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Falar no WhatsApp"
@@ -107,8 +151,26 @@ export default function RootLayout({
                     Contato
                   </h4>
                   <div className="mt-4 space-y-3 text-sm text-slate-300">
-                    <p>WhatsApp: (11) 3230-2090</p>
-                    <p>E-mail: contato@astreontech.com.br</p>
+                    <p>
+                      WhatsApp:{" "}
+                      <a
+                        href={whatsappLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="transition hover:text-cyan-400"
+                      >
+                        (11) 3230-2090
+                      </a>
+                    </p>
+                    <p>
+                      E-mail:{" "}
+                      <a
+                        href={`mailto:${email}`}
+                        className="transition hover:text-cyan-400"
+                      >
+                        {email}
+                      </a>
+                    </p>
                     <p>Atendimento remoto e presencial sob consulta</p>
                   </div>
                 </div>
