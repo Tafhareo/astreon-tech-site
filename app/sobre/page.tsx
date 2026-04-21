@@ -1,150 +1,135 @@
-import Link from "next/link";
-import FadeIn from "@/components/FadeIn";
-
-const pilares = [
-  {
-    title: "Estabilidade",
-    desc: "Ambientes mais confiáveis, organizados e preparados para sustentar a operação no dia a dia com mais previsibilidade.",
-  },
-  {
-    title: "Proteção",
-    desc: "Redução de riscos, fortalecimento de controles e maior segurança para o ambiente digital e para os processos da empresa.",
-  },
-  {
-    title: "Eficiência",
-    desc: "Soluções práticas com foco em resultado, desempenho e melhor custo-benefício para a realidade do negócio.",
-  },
-];
-
-const blocos = [
-  {
-    title: "Quem somos",
-    desc: "A Astreon Tech nasceu com o propósito de apoiar empresas por meio de soluções em tecnologia que combinem organização, segurança e eficiência operacional. Atuamos com uma visão prática e consultiva para transformar a tecnologia em suporte real ao negócio.",
-  },
-  {
-    title: "Nossa proposta",
-    desc: "Trabalhamos para que a infraestrutura, o suporte técnico e a segurança da informação deixem de ser apenas demandas operacionais e passem a contribuir para a continuidade, estabilidade e evolução da empresa.",
-  },
-  {
-    title: "Forma de atuação",
-    desc: "Unimos atendimento técnico, postura consultiva e foco em melhoria contínua, respeitando o porte, a maturidade e a necessidade de cada cliente. Cada ambiente é analisado de forma individual para que a solução seja realmente adequada ao cenário.",
-  },
-];
-
-export default function SobrePage() {
+export default function Sobre() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-[#020617] via-[#0b1220] to-[#0f172a] text-white">
-      <section className="mx-auto max-w-5xl px-6 py-24 text-center">
-        <FadeIn>
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-400">
-              Sobre
-            </p>
+    <main className="bg-slate-950 text-white">
+      {/* HERO */}
+      <section className="mx-auto max-w-5xl px-6 py-20 text-center">
+        <h1 className="text-4xl font-bold md:text-5xl">
+          Sobre a Astreon Tech
+        </h1>
 
-            <h1 className="mt-4 text-4xl font-extrabold leading-tight md:text-5xl">
-              Tecnologia com foco em resultado, segurança e eficiência
-            </h1>
-
-            <p className="mt-6 text-lg leading-8 text-slate-300">
-              A Astreon Tech atua com suporte de TI, infraestrutura,
-              cibersegurança e soluções especializadas para empresas que
-              precisam de ambientes mais organizados, seguros e preparados para
-              crescer com mais estabilidade.
-            </p>
-          </div>
-        </FadeIn>
+        <p className="mt-6 text-lg text-slate-300">
+          Especialistas em soluções de TI, infraestrutura e segurança da
+          informação para empresas que precisam de estabilidade, organização e
+          proteção no ambiente tecnológico.
+        </p>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 pb-24">
-        <div className="grid gap-6 md:grid-cols-3">
-          {pilares.map((item, i) => (
-            <FadeIn key={i} delay={i * 0.08}>
-              <div className="flex h-full flex-col rounded-2xl border border-white/10 bg-white/5 p-8 text-center backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:bg-white/10 hover:shadow-lg">
-                <h2 className="text-2xl font-semibold text-white">
-                  {item.title}
-                </h2>
-                <p className="mt-4 text-base leading-7 text-slate-300">
-                  {item.desc}
-                </p>
-              </div>
-            </FadeIn>
-          ))}
+      {/* HISTÓRIA / POSICIONAMENTO */}
+      <section className="mx-auto max-w-5xl px-6 pb-16">
+        <div className="space-y-6 text-slate-300">
+          <p>
+            A Astreon Tech nasceu com o objetivo de ajudar empresas a terem mais
+            controle, segurança e eficiência em seus ambientes de tecnologia.
+          </p>
+
+          <p>
+            Sabemos que, na prática, muitos negócios enfrentam problemas como
+            lentidão, falhas constantes, falta de organização na infraestrutura
+            e riscos relacionados à segurança da informação.
+          </p>
+
+          <p>
+            Nosso trabalho é atuar diretamente nesses pontos, com uma abordagem
+            prática e consultiva, trazendo soluções que realmente fazem
+            diferença no dia a dia da operação.
+          </p>
         </div>
       </section>
 
+      {/* DIFERENCIAIS */}
       <section className="border-y border-white/10 bg-white/5">
-        <div className="mx-auto max-w-5xl px-6 py-24">
-          <FadeIn>
-            <div className="text-center">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-400">
-                Como atuamos
-              </p>
+        <div className="mx-auto max-w-6xl px-6 py-16">
+          <h2 className="text-center text-3xl font-bold">
+            Por que escolher a Astreon Tech?
+          </h2>
 
-              <h2 className="mt-4 text-3xl font-bold tracking-tight md:text-4xl">
-                Visão técnica com postura consultiva
-              </h2>
-
-              <p className="mx-auto mt-4 max-w-3xl text-lg leading-8 text-slate-300">
-                Nossa atuação busca unir conhecimento técnico, organização e
-                estratégia para entregar soluções sustentáveis, alinhadas à
-                realidade operacional de cada empresa.
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            <div className="rounded-2xl border border-white/10 bg-slate-900/70 p-6">
+              <h3 className="font-semibold text-cyan-400">
+                Experiência prática em ambientes corporativos
+              </h3>
+              <p className="mt-2 text-slate-300">
+                Atuação direta com infraestrutura, segurança, redes e suporte em
+                ambientes reais de empresas.
               </p>
             </div>
-          </FadeIn>
 
-          <div className="mt-12 grid gap-8">
-            {blocos.map((item, i) => (
-              <FadeIn key={i} delay={i * 0.08}>
-                <div className="flex h-full flex-col rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:bg-white/10 hover:shadow-lg">
-                  <h3 className="text-xl font-semibold text-white">
-                    {item.title}
-                  </h3>
-                  <p className="mt-4 text-base leading-8 text-slate-300">
-                    {item.desc}
-                  </p>
-                </div>
-              </FadeIn>
-            ))}
+            <div className="rounded-2xl border border-white/10 bg-slate-900/70 p-6">
+              <h3 className="font-semibold text-cyan-400">
+                Foco em solução, não apenas em tecnologia
+              </h3>
+              <p className="mt-2 text-slate-300">
+                O objetivo não é só implementar ferramentas, mas resolver os
+                problemas que impactam o negócio.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-white/10 bg-slate-900/70 p-6">
+              <h3 className="font-semibold text-cyan-400">
+                Atendimento consultivo e personalizado
+              </h3>
+              <p className="mt-2 text-slate-300">
+                Cada empresa tem uma realidade diferente, e as soluções são
+                adaptadas para cada cenário.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-white/10 bg-slate-900/70 p-6">
+              <h3 className="font-semibold text-cyan-400">
+                Compromisso com estabilidade e segurança
+              </h3>
+              <p className="mt-2 text-slate-300">
+                Redução de falhas, melhoria de desempenho e proteção do ambiente
+                são prioridades.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 py-24">
-        <FadeIn>
-          <div className="rounded-3xl border border-white/10 bg-white/5 px-8 py-12 text-center backdrop-blur-sm md:px-12">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-400">
-              Fale com a Astreon Tech
-            </p>
+      {/* MISSÃO */}
+      <section className="mx-auto max-w-5xl px-6 py-16 text-center">
+        <h2 className="text-3xl font-bold">
+          Nosso foco é simples: fazer a TI da sua empresa funcionar de verdade
+        </h2>
 
-            <h2 className="mt-4 text-3xl font-bold tracking-tight md:text-4xl">
-              Vamos entender o que sua empresa precisa
-            </h2>
+        <p className="mt-6 text-slate-300">
+          A tecnologia deve ser um apoio para o crescimento da empresa, e não um
+          problema constante. A Astreon Tech trabalha para garantir que o seu
+          ambiente esteja organizado, seguro e preparado para o dia a dia.
+        </p>
+      </section>
 
-            <p className="mx-auto mt-4 max-w-2xl text-lg leading-8 text-slate-300">
-              Entre em contato para conversar sobre suporte técnico,
-              infraestrutura, segurança da informação e melhorias para o seu
-              ambiente corporativo.
-            </p>
+      {/* CTA FINAL */}
+      <section className="border-t border-white/10 bg-white/5">
+        <div className="mx-auto max-w-5xl px-6 py-16 text-center">
+          <h2 className="text-3xl font-bold">
+            Quer entender como melhorar a TI da sua empresa?
+          </h2>
 
-            <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <a
-                href="https://wa.me/551132302090"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-xl bg-green-600 px-6 py-3 font-semibold text-white transition duration-300 hover:scale-[1.02] hover:bg-green-700"
-              >
-                Chamar no WhatsApp
-              </a>
+          <p className="mt-4 text-slate-300">
+            Entre em contato e receba um diagnóstico inicial para identificar
+            melhorias no seu ambiente.
+          </p>
 
-              <Link
-                href="/contato"
-                className="rounded-xl bg-cyan-500 px-6 py-3 font-semibold text-white transition duration-300 hover:scale-[1.02] hover:bg-cyan-600"
-              >
-                Ir para contato
-              </Link>
-            </div>
+          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
+            <a
+              href="https://wa.me/551132302090?text=Ol%C3%A1%2C%20vim%20pela%20p%C3%A1gina%20Sobre%20da%20Astreon%20Tech%20e%20quero%20entender%20como%20voc%C3%AAs%20podem%20me%20ajudar."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-2xl bg-cyan-500 px-8 py-3 font-semibold text-slate-950 transition hover:bg-cyan-400"
+            >
+              Falar no WhatsApp
+            </a>
+
+            <a
+              href="/contato"
+              className="rounded-2xl border border-white/20 px-8 py-3 font-semibold text-white transition hover:bg-white/10"
+            >
+              Ir para contato
+            </a>
           </div>
-        </FadeIn>
+        </div>
       </section>
     </main>
   );
