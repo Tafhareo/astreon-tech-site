@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 export default function Servicos() {
+  const whatsappBase = "https://wa.me/551132302090";
   const whatsappLink =
     "https://wa.me/551132302090?text=Ol%C3%A1%2C%20vi%20os%20servi%C3%A7os%20da%20Astreon%20Tech%20e%20quero%20entender%20como%20podem%20me%20ajudar.";
 
@@ -108,7 +109,9 @@ export default function Servicos() {
               </p>
 
               <a
-                href={whatsappLink}
+                href={`${whatsappBase}?text=${encodeURIComponent(
+                  `Olá, vi no site o serviço de ${service.title} e quero entender como vocês podem me ajudar.`
+                )}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-6 inline-block rounded-xl bg-cyan-500 px-6 py-3 text-center text-sm font-semibold text-slate-950 transition hover:bg-cyan-400 sm:text-base"
@@ -162,7 +165,7 @@ export default function Servicos() {
             diagnóstico e entenda exatamente o que pode ser melhorado.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:justify-center">
             <Link
               href="/contato"
               className="rounded-2xl bg-cyan-500 px-8 py-3 text-center text-sm font-semibold text-slate-950 transition hover:bg-cyan-400 sm:text-base"
