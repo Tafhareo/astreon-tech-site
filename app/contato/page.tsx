@@ -25,13 +25,13 @@ export default function Contato() {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
-          <div className="rounded-3xl border border-green-500/30 bg-green-500/10 p-6 sm:p-8">
+        <div className="mt-12 grid gap-6 md:grid-cols-2 md:items-stretch">
+          <div className="flex h-full flex-col rounded-3xl border border-green-500/30 bg-green-500/10 p-6 sm:p-8">
             <h2 className="text-2xl font-semibold text-green-400">
               Atendimento rápido via WhatsApp
             </h2>
 
-            <p className="mt-4 text-sm leading-7 text-slate-300 sm:text-base">
+            <p className="mt-4 flex-1 text-sm leading-7 text-slate-300 sm:text-base">
               Fale diretamente para apresentar sua necessidade e entender como a
               Astreon Tech pode apoiar sua empresa.
             </p>
@@ -46,14 +46,14 @@ export default function Contato() {
             </a>
           </div>
 
-          <div className="rounded-3xl border border-cyan-400/30 bg-cyan-400/10 p-6 sm:p-8">
+          <div className="flex h-full flex-col rounded-3xl border border-cyan-400/30 bg-cyan-400/10 p-6 sm:p-8">
             <h2 className="text-2xl font-semibold text-cyan-300">
               Prefere enviar um e-mail?
             </h2>
 
-            <p className="mt-4 text-sm leading-7 text-slate-300 sm:text-base">
-              Envie sua necessidade e retornaremos para entender o cenário e
-              orientar o melhor caminho para a sua empresa.
+            <p className="mt-4 flex-1 text-sm leading-7 text-slate-300 sm:text-base">
+              Envie sua necessidade e retornaremos para entender seu cenário e
+              orientar o melhor próximo passo para a sua empresa.
             </p>
 
             <a
@@ -104,7 +104,7 @@ export default function Contato() {
             href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-8 inline-block rounded-2xl bg-cyan-500 px-8 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-400 sm:text-base"
+            className="mt-8 inline-block w-full rounded-2xl bg-cyan-500 px-8 py-3 text-center text-sm font-semibold text-slate-950 transition hover:bg-cyan-400 sm:w-auto sm:text-base"
           >
             Solicitar diagnóstico agora
           </a>
