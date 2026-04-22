@@ -79,7 +79,7 @@ export default function Sobre() {
       </section>
 
       <section className="border-y border-white/10 bg-white/5">
-        <div className="mx-auto max-w-6xl px-5 py-14 sm:px-6 md:px-10 md:py-16">
+        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-6 md:px-10 md:py-20">
           <div className="max-w-3xl">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">
               Diferenciais
@@ -93,9 +93,11 @@ export default function Sobre() {
             {highlights.map((item) => (
               <div
                 key={item.title}
-                className="rounded-2xl border border-white/10 bg-slate-900/70 p-6"
+                className="flex h-full flex-col rounded-2xl border border-white/10 bg-slate-900/70 p-6"
               >
-                <h3 className="font-semibold text-cyan-400">{item.title}</h3>
+                <h3 className="font-semibold text-cyan-400">
+                  {item.title}
+                </h3>
                 <p className="mt-3 text-sm leading-7 text-slate-300 sm:text-base">
                   {item.description}
                 </p>
@@ -105,7 +107,7 @@ export default function Sobre() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-5 py-14 sm:px-6 md:px-10 md:py-16">
+      <section className="mx-auto max-w-6xl px-5 py-16 sm:px-6 md:px-10 md:py-20">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">
@@ -152,7 +154,7 @@ export default function Sobre() {
       </section>
 
       <section className="border-t border-white/10 bg-cyan-500/10">
-        <div className="mx-auto max-w-5xl px-5 py-14 text-center sm:px-6 md:px-10 md:py-16">
+        <div className="mx-auto max-w-5xl px-5 py-16 text-center sm:px-6 md:px-10 md:py-20">
           <h2 className="text-2xl font-bold sm:text-3xl md:text-4xl">
             Nosso foco é simples: fazer a TI da sua empresa funcionar de verdade
           </h2>
@@ -164,7 +166,7 @@ export default function Sobre() {
             para a rotina operacional.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:justify-center">
             <a
               href={whatsappLink}
               target="_blank"
