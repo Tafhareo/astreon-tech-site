@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import Image from "next/image";
 import { Inter } from "next/font/google";
+import SiteHeader from "@/components/SiteHeader";
+import Link from "next/link";
 import "./globals.css";
 
 const inter = Inter({
@@ -18,7 +18,8 @@ const email = "contato@astreontech.com.br";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Astreon Tech | Soluções em TI, Infraestrutura e Segurança da Informação",
+    default:
+      "Astreon Tech | Soluções em TI, Infraestrutura e Segurança da Informação",
     template: "%s | Astreon Tech",
   },
   description:
@@ -43,7 +44,8 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Astreon Tech | Soluções em TI, Infraestrutura e Segurança da Informação",
+    title:
+      "Astreon Tech | Soluções em TI, Infraestrutura e Segurança da Informação",
     description:
       "Suporte de TI, infraestrutura, redes, firewall, servidores e segurança da informação para empresas.",
     url: siteUrl,
@@ -53,7 +55,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Astreon Tech | Soluções em TI, Infraestrutura e Segurança da Informação",
+    title:
+      "Astreon Tech | Soluções em TI, Infraestrutura e Segurança da Informação",
     description:
       "Suporte de TI, infraestrutura, redes, firewall, servidores e segurança da informação para empresas.",
   },
@@ -73,45 +76,7 @@ export default function RootLayout({
         className={`${inter.className} min-h-screen bg-white text-slate-900 antialiased`}
       >
         <div className="flex min-h-screen flex-col">
-          <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-sm">
-            <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-6">
-              <Link href="/" className="flex items-center" aria-label="Ir para a página inicial da Astreon Tech">
-                <Image
-                  src="/images/logo-astreon.png"
-                  alt="Logo da Astreon Tech"
-                  width={260}
-                  height={70}
-                  className="h-12 w-auto md:h-14"
-                  priority
-                />
-              </Link>
-
-              <nav className="hidden items-center gap-8 text-sm font-semibold text-slate-700 md:flex">
-                <Link href="/" className="transition hover:text-cyan-600">
-                  Início
-                </Link>
-                <Link href="/servicos" className="transition hover:text-cyan-600">
-                  Serviços
-                </Link>
-                <Link href="/sobre" className="transition hover:text-cyan-600">
-                  Sobre
-                </Link>
-                <Link
-                  href="/contato"
-                  className="rounded-xl bg-cyan-500 px-5 py-2.5 text-white transition hover:bg-cyan-600"
-                >
-                  Contato
-                </Link>
-              </nav>
-
-              <Link
-                href="/contato"
-                className="rounded-xl bg-cyan-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-cyan-600 md:hidden"
-              >
-                Contato
-              </Link>
-            </div>
-          </header>
+          <SiteHeader />
 
           <main className="flex-1">{children}</main>
 
@@ -135,7 +100,7 @@ export default function RootLayout({
           </a>
 
           <footer className="border-t border-white/10 bg-[#020617] text-white">
-            <div className="mx-auto max-w-7xl px-6 py-14">
+            <div className="mx-auto max-w-7xl px-5 py-12 sm:px-6 md:px-10 md:py-14">
               <div className="grid gap-10 md:grid-cols-3">
                 <div>
                   <h3 className="text-lg font-semibold">Astreon Tech</h3>
@@ -166,7 +131,7 @@ export default function RootLayout({
                       E-mail:{" "}
                       <a
                         href={`mailto:${email}`}
-                        className="transition hover:text-cyan-400"
+                        className="break-all transition hover:text-cyan-400 sm:break-normal"
                       >
                         {email}
                       </a>
@@ -183,13 +148,22 @@ export default function RootLayout({
                     <Link href="/" className="transition hover:text-cyan-400">
                       Início
                     </Link>
-                    <Link href="/servicos" className="transition hover:text-cyan-400">
+                    <Link
+                      href="/servicos"
+                      className="transition hover:text-cyan-400"
+                    >
                       Serviços
                     </Link>
-                    <Link href="/sobre" className="transition hover:text-cyan-400">
+                    <Link
+                      href="/sobre"
+                      className="transition hover:text-cyan-400"
+                    >
                       Sobre
                     </Link>
-                    <Link href="/contato" className="transition hover:text-cyan-400">
+                    <Link
+                      href="/contato"
+                      className="transition hover:text-cyan-400"
+                    >
                       Contato
                     </Link>
                   </div>
