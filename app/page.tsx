@@ -154,12 +154,16 @@ export default function Home() {
                 <p className="mt-3 flex-1 leading-7 text-slate-300">
                   {service.description}
                 </p>
-                <Link
-                  href="/servicos"
+                <a
+                  href={`https://wa.me/551132302090?text=${encodeURIComponent(
+                    `Olá, vi no site o serviço de ${service.title} e quero entender como vocês podem me ajudar.`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="mt-6 inline-flex text-sm font-semibold text-cyan-300 transition hover:text-cyan-200"
                 >
-                  Ver detalhes do serviço
-                </Link>
+                  Falar sobre este serviço
+                </a>
               </div>
             ))}
           </div>
