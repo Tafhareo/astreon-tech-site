@@ -10,16 +10,22 @@ export default function SiteHeader() {
   const whatsappLink =
     "https://wa.me/551132302090?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Astreon%20Tech%20e%20quero%20solicitar%20um%20diagn%C3%B3stico%20de%20TI.";
 
-  const closeMenu = () => setMenuOpen(false);
+  const handleNavigate = () => {
+    setMenuOpen(false);
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 50);
+  };
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-sm">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-6 md:h-24 md:px-10">
         <Link
           href="/"
+          scroll={true}
           className="flex items-center"
           aria-label="Ir para a página inicial da Astreon Tech"
-          onClick={closeMenu}
+          onClick={handleNavigate}
         >
           <Image
             src="/images/logo-astreon.png"
@@ -32,19 +38,19 @@ export default function SiteHeader() {
         </Link>
 
         <nav className="hidden items-center gap-8 text-sm font-semibold text-slate-700 md:flex">
-          <Link href="/" className="transition hover:text-cyan-600">
+          <Link href="/" scroll={true} onClick={handleNavigate} className="transition hover:text-cyan-600">
             Início
           </Link>
 
-          <Link href="/servicos" className="transition hover:text-cyan-600">
+          <Link href="/servicos" scroll={true} onClick={handleNavigate} className="transition hover:text-cyan-600">
             Serviços
           </Link>
 
-          <Link href="/sobre" className="transition hover:text-cyan-600">
+          <Link href="/sobre" scroll={true} onClick={handleNavigate} className="transition hover:text-cyan-600">
             Sobre
           </Link>
 
-          <Link href="/contato" className="transition hover:text-cyan-600">
+          <Link href="/contato" scroll={true} onClick={handleNavigate} className="transition hover:text-cyan-600">
             Contato
           </Link>
 
@@ -75,17 +81,9 @@ export default function SiteHeader() {
             aria-hidden="true"
           >
             {menuOpen ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
             ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
             )}
           </svg>
         </button>
@@ -94,35 +92,19 @@ export default function SiteHeader() {
       {menuOpen && (
         <div className="border-t border-slate-200 bg-white shadow-lg md:hidden">
           <nav className="mx-auto flex max-w-7xl flex-col px-5 py-4 sm:px-6">
-            <Link
-              href="/"
-              onClick={closeMenu}
-              className="rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 hover:text-cyan-600"
-            >
+            <Link href="/" scroll={true} onClick={handleNavigate} className="rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-100">
               Início
             </Link>
 
-            <Link
-              href="/servicos"
-              onClick={closeMenu}
-              className="rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 hover:text-cyan-600"
-            >
+            <Link href="/servicos" scroll={true} onClick={handleNavigate} className="rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-100">
               Serviços
             </Link>
 
-            <Link
-              href="/sobre"
-              onClick={closeMenu}
-              className="rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 hover:text-cyan-600"
-            >
+            <Link href="/sobre" scroll={true} onClick={handleNavigate} className="rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-100">
               Sobre
             </Link>
 
-            <Link
-              href="/contato"
-              onClick={closeMenu}
-              className="rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 hover:text-cyan-600"
-            >
+            <Link href="/contato" scroll={true} onClick={handleNavigate} className="rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-100">
               Contato
             </Link>
 
@@ -130,8 +112,8 @@ export default function SiteHeader() {
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={closeMenu}
-              className="mt-3 rounded-xl bg-cyan-500 px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-cyan-600"
+              onClick={() => setMenuOpen(false)}
+              className="mt-3 rounded-xl bg-cyan-500 px-4 py-3 text-center text-sm font-semibold text-white hover:bg-cyan-600"
             >
               Solicitar diagnóstico no WhatsApp
             </a>

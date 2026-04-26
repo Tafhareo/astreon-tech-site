@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import SiteHeader from "@/components/SiteHeader";
+import ScrollToTop from "@/components/ScrollToTop";
 import Link from "next/link";
 import "./globals.css";
 
@@ -73,6 +74,7 @@ export default function RootLayout({
       >
         <div className="flex min-h-screen flex-col">
           <SiteHeader />
+          <ScrollToTop />
 
           <main className="flex-1">{children}</main>
 
