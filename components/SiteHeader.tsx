@@ -7,6 +7,9 @@ import Image from "next/image";
 export default function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const whatsappLink =
+    "https://wa.me/551132302090?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Astreon%20Tech%20e%20quero%20solicitar%20um%20diagn%C3%B3stico%20de%20TI.";
+
   const closeMenu = () => setMenuOpen(false);
 
   return (
@@ -32,18 +35,27 @@ export default function SiteHeader() {
           <Link href="/" className="transition hover:text-cyan-600">
             Início
           </Link>
+
           <Link href="/servicos" className="transition hover:text-cyan-600">
             Serviços
           </Link>
+
           <Link href="/sobre" className="transition hover:text-cyan-600">
             Sobre
           </Link>
-          <Link
-            href="/contato"
-            className="rounded-xl bg-cyan-500 px-5 py-2.5 text-white transition hover:bg-cyan-600"
-          >
+
+          <Link href="/contato" className="transition hover:text-cyan-600">
             Contato
           </Link>
+
+          <a
+            href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-xl bg-cyan-500 px-5 py-2.5 text-white transition hover:bg-cyan-600"
+          >
+            Diagnóstico
+          </a>
         </nav>
 
         <button
@@ -63,16 +75,24 @@ export default function SiteHeader() {
             aria-hidden="true"
           >
             {menuOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
             ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
             )}
           </svg>
         </button>
       </div>
 
       {menuOpen && (
-        <div className="border-t border-slate-200 bg-white md:hidden">
+        <div className="border-t border-slate-200 bg-white shadow-lg md:hidden">
           <nav className="mx-auto flex max-w-7xl flex-col px-5 py-4 sm:px-6">
             <Link
               href="/"
@@ -81,6 +101,7 @@ export default function SiteHeader() {
             >
               Início
             </Link>
+
             <Link
               href="/servicos"
               onClick={closeMenu}
@@ -88,6 +109,7 @@ export default function SiteHeader() {
             >
               Serviços
             </Link>
+
             <Link
               href="/sobre"
               onClick={closeMenu}
@@ -95,13 +117,24 @@ export default function SiteHeader() {
             >
               Sobre
             </Link>
+
             <Link
               href="/contato"
               onClick={closeMenu}
-              className="mt-2 rounded-xl bg-cyan-500 px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-cyan-600"
+              className="rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 hover:text-cyan-600"
             >
               Contato
             </Link>
+
+            <a
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={closeMenu}
+              className="mt-3 rounded-xl bg-cyan-500 px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-cyan-600"
+            >
+              Solicitar diagnóstico no WhatsApp
+            </a>
           </nav>
         </div>
       )}
