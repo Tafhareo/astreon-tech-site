@@ -20,7 +20,7 @@ export default function Sobre() {
                   10 anos resolvendo problemas reais de TI em empresas de verdade
                 </h1>
                 <p className="mt-6 text-base leading-7 text-slate-300 sm:text-lg">
-                  Meu nome é <strong className="text-white">Taffarel Estrela</strong>. Sou especialista em infraestrutura de TI, segurança da informação e operações corporativas. Ao longo de uma década atuando em empresas de diferentes segmentos, acumulei experiência prática nos pontos que mais impactam o dia a dia de um negócio.
+                  Meu nome é <strong className="text-white">Tafhareo Estrela</strong>. Sou especialista em infraestrutura de TI, segurança da informação e operações corporativas. Ao longo de uma década atuando em empresas de diferentes segmentos, acumulei experiência prática nos pontos que mais impactam o dia a dia de um negócio.
                 </p>
                 <p className="mt-4 text-base leading-7 text-slate-300 sm:text-lg">
                   A Astreon Tech nasceu para transformar esse conhecimento em resultado para empresas que dependem de tecnologia para operar — e que não podem se dar ao luxo de ter falhas, lentidão ou vulnerabilidades no ambiente de TI.
