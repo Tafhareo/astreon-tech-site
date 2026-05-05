@@ -1,4 +1,5 @@
 import FadeIn from "@/components/FadeIn";
+import StatsSection from "@/components/StatsSection";
 
 export default function Home() {
   const whatsappLink =
@@ -39,12 +40,24 @@ export default function Home() {
 
   const testimonials = [
     {
+      name: "Tamara Estrela",
+      text: "A empresa foi excepcional na montagem da nossa infraestrutura e configuração de redes, garantindo proteção total com firewalls robustos e máxima estabilidade operacional. Tafharel esteve sempre disponível durante todo o processo de implantação e agora como suporte. Atendimento, agilidade, segurança e responsabilidade. Recomendo esta empresa.",
+    },
+    {
+      name: "Alberto Junior",
+      text: "A Astreon Tech elevou nossa operação com VICIdial e Telefonia estáveis, além de uma consultoria estratégica que realmente fez diferença. O suporte de TI é ágil e confiável, garantindo tranquilidade no dia a dia.",
+    },
+    {
       name: "Melquisedec Paulo Santana",
       text: "Muito bom, pessoal profissional. Taffarel, sem palavras, muito bom trabalhar com o pessoal. Nota 10.",
     },
     {
       name: "Kleber Conforte",
       text: "Empresa nota 1000, melhor empresa de TI disparada que já contratei. Extremamente educados e muito competentes.",
+    },
+    {
+      name: "Eliete Maria Ferraz",
+      text: "Atendimento maravilhoso, empresa nota 10.",
     },
     {
       name: "Lucivane Lira",
@@ -171,8 +184,8 @@ export default function Home() {
                 O que dizem sobre nosso trabalho
               </h2>
               <p className="mt-4 text-base leading-7 text-slate-300 sm:text-lg">
-                Avaliações reais do Google ajudam novos clientes a entenderem a
-                qualidade, clareza e comprometimento da Astreon Tech.
+                Avaliações reais do Google de clientes que já transformaram sua
+                operação com a Astreon Tech.
               </p>
             </div>
 
@@ -186,7 +199,7 @@ export default function Home() {
                     <div className="text-lg text-yellow-300">★★★★★</div>
 
                     <p className="mt-4 flex-1 whitespace-normal text-sm leading-7 text-slate-300">
-                      “{item.text}”
+                      &ldquo;{item.text}&rdquo;
                     </p>
 
                     <p className="mt-5 text-sm font-semibold text-cyan-300">
@@ -212,23 +225,19 @@ export default function Home() {
 
         <style>{`
           .testimonial-scroll {
-            animation: testimonial-scroll 35s linear infinite;
+            animation: testimonial-scroll 50s linear infinite;
           }
-
           .testimonial-scroll:hover {
             animation-play-state: paused;
           }
-
           @keyframes testimonial-scroll {
-            from {
-              transform: translateX(0);
-            }
-            to {
-              transform: translateX(-50%);
-            }
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
           }
         `}</style>
       </section>
+
+      <StatsSection />
 
       <section className="mx-auto max-w-7xl px-5 py-14 sm:px-6 md:px-10 md:py-16">
         <FadeIn>
