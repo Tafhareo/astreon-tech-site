@@ -45,7 +45,7 @@ export default function Sobre() {
                       👨‍💻
                     </div>
                     <div className="text-center">
-                      <p className="text-base font-bold text-white">Taffarel Estrela</p>
+                      <p className="text-base font-bold text-white">Tafhareo Estrela</p>
                       <p className="text-xs text-cyan-300">Especialista em TI & Segurança</p>
                     </div>
                   </div>
