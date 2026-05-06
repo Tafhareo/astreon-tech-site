@@ -77,6 +77,21 @@ export default function Servicos() {
     },
   ];
 
+  const faqs = [
+    {
+      question: "O atendimento é remoto ou presencial?",
+      answer: "Trabalhamos com atendimento remoto e presencial conforme a necessidade. A maioria dos chamados é resolvida remotamente com agilidade. Para implantações, configurações de rede ou visitas técnicas, atendemos presencialmente na região de São Paulo e sob consulta em outras localidades.",
+    },
+    {
+      question: "Atendem empresas de qual tamanho?",
+      answer: "Nosso foco são pequenas e médias empresas — de 5 a 200 usuários. Esse perfil é onde conseguimos gerar mais impacto: empresas que precisam de uma TI profissional mas que ainda não têm equipe interna dedicada ou que precisam complementar o time existente.",
+    },
+    {
+      question: "Como funciona o diagnóstico inicial?",
+      answer: "O diagnóstico é gratuito e sem compromisso. Conversamos pelo WhatsApp ou por chamada para entender sua situação atual — quais problemas enfrenta, como está sua infraestrutura e o que impacta mais sua operação. A partir daí indicamos o melhor caminho.",
+    },
+  ];
+
   return (
     <main className="bg-slate-950 text-white">
 
@@ -163,6 +178,35 @@ export default function Servicos() {
                   </div>
                   <h3 className="text-base font-semibold text-white">{step.title}</h3>
                   <p className="mt-2 text-sm leading-6 text-slate-400">{step.desc}</p>
+                </div>
+              ))}
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="border-b border-white/10">
+        <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6 md:px-10 md:py-16">
+          <FadeIn>
+            <div className="mb-10 max-w-3xl">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">
+                Dúvidas frequentes
+              </p>
+              <h2 className="mt-3 text-2xl font-bold sm:text-3xl md:text-4xl">
+                Perguntas que recebemos com frequência
+              </h2>
+            </div>
+
+            <div className="grid gap-4 lg:grid-cols-3">
+              {faqs.map((faq) => (
+                <div
+                  key={faq.question}
+                  className="rounded-3xl border border-white/10 bg-slate-900/70 p-6"
+                >
+                  <div className="mb-3 h-1 w-8 rounded-full bg-cyan-400" />
+                  <h3 className="text-base font-semibold text-white">{faq.question}</h3>
+                  <p className="mt-3 text-sm leading-7 text-slate-400">{faq.answer}</p>
                 </div>
               ))}
             </div>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import SiteHeader from "@/components/SiteHeader";
 import ScrollToTop from "@/components/ScrollToTop";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import Link from "next/link";
 import "./globals.css";
 
@@ -31,8 +32,7 @@ export const metadata: Metadata = {
     "Suporte de TI, infraestrutura, redes, firewall e segurança da informação para empresas que precisam de estabilidade e desempenho.",
 
   openGraph: {
-    title:
-      "Astreon Tech | Suporte de TI e Segurança para Empresas",
+    title: "Astreon Tech | Suporte de TI e Segurança para Empresas",
     description:
       "Reduza falhas, melhore sua infraestrutura e aumente a estabilidade da sua empresa com a Astreon Tech.",
     url: siteUrl,
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/og-image.png", // você pode criar depois
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "Astreon Tech",
@@ -51,17 +51,15 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title:
-      "Astreon Tech | Soluções em TI",
-    description:
-      "Infraestrutura, suporte e segurança para empresas.",
+    title: "Astreon Tech | Soluções em TI",
+    description: "Infraestrutura, suporte e segurança para empresas.",
   },
 
   icons: {
-  icon: "/icon.png",
-  shortcut: "/icon.png",
-  apple: "/icon.png",
-},
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
+  },
 };
 
 export default function RootLayout({
@@ -80,25 +78,8 @@ export default function RootLayout({
 
           <main className="flex-1">{children}</main>
 
-          {/* BOTÃO WHATSAPP MELHORADO */}
-          <a
-            href={whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Falar no WhatsApp"
-            className="fixed bottom-6 right-6 z-50 flex h-16 w-16 items-center justify-center rounded-full bg-green-500 text-white shadow-2xl transition-all duration-300 hover:scale-110 hover:bg-green-600"
-          >
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-30"></span>
-
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 32 32"
-              className="h-8 w-8 fill-current"
-            >
-              <path d="M19.11 17.21c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.12-.41-2.13-1.31-.79-.71-1.32-1.58-1.48-1.85-.16-.27-.02-.42.12-.56.13-.13.27-.32.41-.47.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.47-.07-.14-.61-1.48-.84-2.02-.22-.53-.45-.46-.61-.46h-.52c-.18 0-.47.07-.72.34-.25.27-.95.93-.95 2.27 0 1.34.97 2.63 1.11 2.81.14.18 1.91 2.91 4.62 4.08.64.27 1.14.43 1.53.55.64.2 1.22.17 1.68.1.51-.08 1.6-.65 1.82-1.28.23-.63.23-1.17.16-1.28-.07-.11-.25-.18-.52-.32Z" />
-              <path d="M16.03 3.2c-6.97 0-12.63 5.64-12.63 12.58 0 2.22.58 4.39 1.68 6.31L3.2 28.8l6.93-1.82a12.7 12.7 0 0 0 5.9 1.5h.01c6.96 0 12.62-5.64 12.62-12.58 0-3.36-1.31-6.51-3.69-8.88A12.55 12.55 0 0 0 16.03 3.2Z" />
-            </svg>
-          </a>
+          {/* BOTÃO WHATSAPP COM BALÃO DE CHAT */}
+          <WhatsAppButton />
 
           {/* FOOTER */}
           <footer className="border-t border-white/10 bg-[#020617] text-white">
@@ -116,7 +97,6 @@ export default function RootLayout({
                   <h4 className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-400">
                     Contato
                   </h4>
-
                   <div className="mt-4 space-y-3 text-sm text-slate-300">
                     <p>
                       WhatsApp:{" "}
@@ -124,7 +104,6 @@ export default function RootLayout({
                         (11) 3230-2090
                       </a>
                     </p>
-
                     <p>
                       E-mail:{" "}
                       <a href={`mailto:${email}`} className="hover:text-cyan-400">
@@ -138,7 +117,6 @@ export default function RootLayout({
                   <h4 className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-400">
                     Navegação
                   </h4>
-
                   <div className="mt-4 flex flex-col gap-3 text-sm text-slate-300">
                     <Link href="/">Início</Link>
                     <Link href="/servicos">Serviços</Link>

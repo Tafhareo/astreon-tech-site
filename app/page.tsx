@@ -196,15 +196,36 @@ export default function Home() {
                     key={`${item.name}-${index}`}
                     className="flex min-h-[260px] w-[300px] flex-shrink-0 flex-col rounded-3xl border border-white/10 bg-slate-900/70 p-6 sm:w-[360px]"
                   >
-                    <div className="text-lg text-yellow-300">★★★★★</div>
+                    {/* Estrelas + ícone aspas */}
+                    <div className="flex items-center justify-between">
+                      <div className="text-base text-yellow-300">★★★★★</div>
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        className="opacity-20"
+                      >
+                        <path
+                          d="M11 7H7C5.9 7 5 7.9 5 9v4c0 1.1.9 2 2 2h2v2c0 1.1-.9 2-2 2H6v2h1c2.2 0 4-1.8 4-4V7zm8 0h-4c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h2v2c0 1.1-.9 2-2 2h-1v2h1c2.2 0 4-1.8 4-4V7z"
+                          fill="white"
+                        />
+                      </svg>
+                    </div>
 
                     <p className="mt-4 flex-1 whitespace-normal text-sm leading-7 text-slate-300">
-                      &ldquo;{item.text}&rdquo;
+                      {item.text}
                     </p>
 
-                    <p className="mt-5 text-sm font-semibold text-cyan-300">
-                      — {item.name}
-                    </p>
+                    {/* Separador + nome */}
+                    <div className="mt-5 border-t border-white/10 pt-4">
+                      <p className="text-sm font-semibold text-cyan-300">
+                        {item.name}
+                      </p>
+                      <p className="mt-0.5 text-xs text-slate-500">
+                        Cliente Astreon Tech
+                      </p>
+                    </div>
                   </div>
                 ))}
               </div>

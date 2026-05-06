@@ -54,13 +54,18 @@ export default function SiteHeader() {
             Contato
           </Link>
 
+          {/* Botão Diagnóstico destacado */}
           <a
             href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-xl bg-cyan-500 px-5 py-2.5 text-white transition hover:bg-cyan-600"
+            className="relative inline-flex items-center gap-2 rounded-xl bg-cyan-500 px-5 py-2.5 text-sm font-bold text-white shadow-md shadow-cyan-500/30 transition hover:bg-cyan-600 hover:shadow-cyan-600/30"
           >
-            Diagnóstico
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-60"></span>
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-white"></span>
+            </span>
+            Diagnóstico Gratuito
           </a>
         </nav>
 
@@ -113,9 +118,9 @@ export default function SiteHeader() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setMenuOpen(false)}
-              className="mt-3 rounded-xl bg-cyan-500 px-4 py-3 text-center text-sm font-semibold text-white hover:bg-cyan-600"
+              className="mt-3 rounded-xl bg-cyan-500 px-4 py-3 text-center text-sm font-bold text-white shadow-md shadow-cyan-500/30 hover:bg-cyan-600"
             >
-              Solicitar diagnóstico no WhatsApp
+              Solicitar diagnóstico gratuito
             </a>
           </nav>
         </div>

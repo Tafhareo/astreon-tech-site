@@ -4,6 +4,9 @@ export default function Sobre() {
   const whatsappLink =
     "https://wa.me/551132302090?text=Ol%C3%A1%2C%20vim%20pela%20p%C3%A1gina%20Sobre%20da%20Astreon%20Tech%20e%20quero%20entender%20como%20voc%C3%AAs%20podem%20me%20ajudar.";
 
+  const linkedinLink =
+    "https://www.linkedin.com/in/tafhareo-estrela-a67b39122/";
+
   return (
     <main className="bg-slate-950 text-white">
 
@@ -25,7 +28,7 @@ export default function Sobre() {
                 <p className="mt-4 text-base leading-7 text-slate-300 sm:text-lg">
                   A Astreon Tech nasceu para transformar esse conhecimento em resultado para empresas que dependem de tecnologia para operar — e que não podem se dar ao luxo de ter falhas, lentidão ou vulnerabilidades no ambiente de TI.
                 </p>
-                <div className="mt-8">
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                   <a
                     href={whatsappLink}
                     target="_blank"
@@ -33,6 +36,17 @@ export default function Sobre() {
                     className="inline-block w-full rounded-2xl bg-cyan-500 px-6 py-3 text-center font-semibold text-slate-950 transition hover:bg-cyan-400 sm:w-auto"
                   >
                     Falar com o especialista
+                  </a>
+                  <a
+                    href={linkedinLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-white/20 px-6 py-3 text-sm font-semibold text-slate-300 transition hover:border-white/40 hover:text-white sm:w-auto"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                    Ver perfil no LinkedIn
                   </a>
                 </div>
               </div>
@@ -176,14 +190,25 @@ export default function Sobre() {
               <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
                 Solicite um diagnóstico inicial sem compromisso e entenda o que pode ser melhorado no seu ambiente de TI.
               </p>
-              <div className="mt-8">
+              <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
                 <a
                   href={whatsappLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block w-full rounded-2xl bg-cyan-500 px-6 py-3 text-center font-semibold text-slate-950 transition hover:bg-cyan-400 sm:w-auto"
+                  className="inline-block rounded-2xl bg-cyan-500 px-8 py-3 text-center font-semibold text-slate-950 transition hover:bg-cyan-400"
                 >
                   Solicitar diagnóstico no WhatsApp
+                </a>
+                <a
+                  href={linkedinLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/20 px-8 py-3 text-sm font-semibold text-slate-300 transition hover:border-white/40 hover:text-white"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  </svg>
+                  Conectar no LinkedIn
                 </a>
               </div>
             </div>
