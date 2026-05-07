@@ -36,23 +36,48 @@ const stats: Stat[] = [
   },
 ];
 
+/**
+ * Animação de contagem usando requestAnimationFrame.
+ * - Sincroniza com o refresh do navegador (sem timers descontrolados)
+ * - Pausa automaticamente quando a aba está em background
+ * - Easing suave (easeOutCubic) em vez de incremento linear
+ * - Respeita prefers-reduced-motion
+ */
 function useCountUp(target: number, duration: number, active: boolean) {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
     if (!active) return;
-    let current = 0;
-    const step = target / (duration / 16);
-    const timer = setInterval(() => {
-      current += step;
-      if (current >= target) {
-        setCount(target);
-        clearInterval(timer);
+
+    const prefersReduced = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (prefersReduced) {
+      setCount(target);
+      return;
+    }
+
+    let rafId: number;
+    let startTime: number | null = null;
+
+    const tick = (now: number) => {
+      if (startTime === null) startTime = now;
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      // easeOutCubic
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.floor(eased * target));
+
+      if (progress < 1) {
+        rafId = requestAnimationFrame(tick);
       } else {
-        setCount(Math.floor(current));
+        setCount(target);
       }
-    }, 16);
-    return () => clearInterval(timer);
+    };
+
+    rafId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafId);
   }, [active, target, duration]);
 
   return count;
@@ -78,7 +103,7 @@ function StatCard({
         transition: `opacity 0.6s ease ${index * 0.12}s, transform 0.6s ease ${index * 0.12}s`,
       }}
     >
-      <div className="text-4xl font-bold text-cyan-400 tracking-tight">
+      <div className="text-4xl font-bold text-cyan-400 tracking-tight tabular-nums">
         {count}
         {stat.suffix}
       </div>
@@ -97,6 +122,9 @@ export default function StatsSection() {
   const [active, setActive] = useState(false);
 
   useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -106,7 +134,8 @@ export default function StatsSection() {
       },
       { threshold: 0.2 }
     );
-    if (ref.current) observer.observe(ref.current);
+
+    observer.observe(node);
     return () => observer.disconnect();
   }, []);
 

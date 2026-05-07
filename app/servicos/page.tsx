@@ -95,32 +95,27 @@ export default function Servicos() {
   return (
     <main className="bg-slate-950 text-white">
 
-      {/* Hero */}
+      {/* Hero — sem FadeIn para melhorar LCP no mobile */}
       <section className="border-b border-white/10">
         <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 md:px-10 md:py-24">
-          <FadeIn>
-            <span className="mb-4 inline-flex rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-cyan-300">
-              Serviços
-            </span>
-            <h1 className="mt-4 max-w-4xl text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">
-              Serviços de TI pensados para resolver problemas reais da sua empresa
-            </h1>
-            <p className="mt-6 max-w-3xl text-base leading-7 text-slate-300 sm:text-lg">
-              Atuamos diretamente nos pontos críticos da operação para melhorar desempenho, reduzir falhas e aumentar a segurança do ambiente tecnológico.
-            </p>
-          </FadeIn>
+          <span className="mb-4 inline-flex rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-cyan-300">
+            Serviços
+          </span>
+          <h1 className="mt-4 max-w-4xl text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">
+            Serviços de TI pensados para resolver problemas reais da sua empresa
+          </h1>
+          <p className="mt-6 max-w-3xl text-base leading-7 text-slate-300 sm:text-lg">
+            Atuamos diretamente nos pontos críticos da operação para melhorar desempenho, reduzir falhas e aumentar a segurança do ambiente tecnológico.
+          </p>
         </div>
       </section>
 
-      {/* Serviços */}
+      {/* Serviços — FadeIn por card, com delay escalonado e cap no mobile */}
       <section className="mx-auto max-w-7xl px-5 py-14 sm:px-6 md:px-10 md:py-16">
-        <FadeIn>
-          <div className="grid gap-6 sm:grid-cols-2">
-            {services.map((service) => (
-              <div
-                key={service.title}
-                className="flex flex-col rounded-3xl border border-white/10 bg-slate-900/70 p-6 shadow-lg shadow-black/20"
-              >
+        <div className="grid gap-6 sm:grid-cols-2">
+          {services.map((service, i) => (
+            <FadeIn key={service.title} delay={Math.min(i, 3) * 0.08}>
+              <div className="flex h-full flex-col rounded-3xl border border-white/10 bg-slate-900/70 p-6 shadow-lg shadow-black/20">
                 <div className="mb-4 text-3xl">{service.icon}</div>
                 <h2 className="text-lg font-bold text-white">{service.title}</h2>
 
@@ -146,9 +141,9 @@ export default function Servicos() {
                   Falar sobre este serviço →
                 </a>
               </div>
-            ))}
-          </div>
-        </FadeIn>
+            </FadeIn>
+          ))}
+        </div>
       </section>
 
       {/* Como funciona */}
@@ -166,22 +161,21 @@ export default function Servicos() {
                 Trabalhamos de forma prática para entender a necessidade da sua empresa, orientar o melhor caminho e apoiar a execução.
               </p>
             </div>
+          </FadeIn>
 
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {steps.map((step) => (
-                <div
-                  key={step.number}
-                  className="rounded-3xl border border-white/10 bg-slate-900/70 p-6"
-                >
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {steps.map((step, i) => (
+              <FadeIn key={step.number} delay={i * 0.08}>
+                <div className="rounded-3xl border border-white/10 bg-slate-900/70 p-6">
                   <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-2xl bg-cyan-500/20 text-lg font-bold text-cyan-300">
                     {step.number}
                   </div>
                   <h3 className="text-base font-semibold text-white">{step.title}</h3>
                   <p className="mt-2 text-sm leading-6 text-slate-400">{step.desc}</p>
                 </div>
-              ))}
-            </div>
-          </FadeIn>
+              </FadeIn>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -197,20 +191,19 @@ export default function Servicos() {
                 Perguntas que recebemos com frequência
               </h2>
             </div>
+          </FadeIn>
 
-            <div className="grid gap-4 lg:grid-cols-3">
-              {faqs.map((faq) => (
-                <div
-                  key={faq.question}
-                  className="rounded-3xl border border-white/10 bg-slate-900/70 p-6"
-                >
+          <div className="grid gap-4 lg:grid-cols-3">
+            {faqs.map((faq, i) => (
+              <FadeIn key={faq.question} delay={i * 0.08}>
+                <div className="rounded-3xl border border-white/10 bg-slate-900/70 p-6">
                   <div className="mb-3 h-1 w-8 rounded-full bg-cyan-400" />
                   <h3 className="text-base font-semibold text-white">{faq.question}</h3>
                   <p className="mt-3 text-sm leading-7 text-slate-400">{faq.answer}</p>
                 </div>
-              ))}
-            </div>
-          </FadeIn>
+              </FadeIn>
+            ))}
+          </div>
         </div>
       </section>
 
