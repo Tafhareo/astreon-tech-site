@@ -128,7 +128,7 @@ export default function RootLayout({
               </div>
 
               <div className="mt-10 border-t border-white/10 pt-6 text-center text-xs text-slate-400">
-                © 2026 Astreon Tech. Todos os direitos reservados.
+                © {new Date().getFullYear()} Astreon Tech. Todos os direitos reservados.
               </div>
             </div>
           </footer>

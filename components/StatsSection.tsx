@@ -17,37 +17,41 @@ const stats: Stat[] = [
     description: "Atuando em infraestrutura, segurança e suporte corporativo",
   },
   {
-    value: 50,
+    value: 200,
     suffix: "+",
     label: "Projetos entregues",
     description: "Implantações, migrações e reestruturações de ambientes de TI",
   },
   {
-    value: 500,
+    value: 1500,
     suffix: "+",
     label: "Usuários suportados",
     description: "Em ambientes corporativos de pequeno e médio porte",
   },
   {
-    value: 98,
+    value: 100,
     suffix: "%",
-    label: "Taxa de satisfação",
-    description: "Baseada em avaliações reais de clientes no Google",
+    label: "Satisfação no Google",
+    description: "Baseada em avaliações reais 5 estrelas de clientes",
   },
 ];
 
 /**
- * Animação de contagem usando requestAnimationFrame.
- * - Sincroniza com o refresh do navegador (sem timers descontrolados)
- * - Pausa automaticamente quando a aba está em background
- * - Easing suave (easeOutCubic) em vez de incremento linear
+ * Animação de contagem com fallback resiliente.
+ * - Antes da animação rodar, mostra o valor final (não mais "0")
+ * - Quando entra no viewport, reseta para 0 e anima até o valor final
  * - Respeita prefers-reduced-motion
+ * - Pausa automaticamente quando aba está em background
  */
 function useCountUp(target: number, duration: number, active: boolean) {
-  const [count, setCount] = useState(0);
+  // CORREÇÃO PRINCIPAL: começa com o valor final, não com 0
+  // Assim, se JS demorar ou animação falhar, o usuário NUNCA vê "0+"
+  const [count, setCount] = useState(target);
+  const hasAnimated = useRef(false);
 
   useEffect(() => {
-    if (!active) return;
+    if (!active || hasAnimated.current) return;
+    hasAnimated.current = true;
 
     const prefersReduced = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
@@ -58,6 +62,9 @@ function useCountUp(target: number, duration: number, active: boolean) {
       return;
     }
 
+    // Reseta para 0 só na hora de animar (curtíssimo, imperceptível)
+    setCount(0);
+
     let rafId: number;
     let startTime: number | null = null;
 
@@ -65,7 +72,6 @@ function useCountUp(target: number, duration: number, active: boolean) {
       if (startTime === null) startTime = now;
       const elapsed = now - startTime;
       const progress = Math.min(elapsed / duration, 1);
-      // easeOutCubic
       const eased = 1 - Math.pow(1 - progress, 3);
       setCount(Math.floor(eased * target));
 
@@ -94,17 +100,20 @@ function StatCard({
 }) {
   const count = useCountUp(stat.value, 1800, active);
 
+  // Formatação de número grande com separador de milhar (1.500 em vez de 1500)
+  const formattedCount = count.toLocaleString("pt-BR");
+
   return (
     <div
       className="rounded-3xl border border-white/10 bg-slate-900/70 p-6 shadow-lg shadow-black/20"
       style={{
-        opacity: active ? 1 : 0,
-        transform: active ? "translateY(0)" : "translateY(24px)",
+        opacity: active ? 1 : 1, // Sempre visível desde o SSR
+        transform: active ? "translateY(0)" : "translateY(0)",
         transition: `opacity 0.6s ease ${index * 0.12}s, transform 0.6s ease ${index * 0.12}s`,
       }}
     >
       <div className="text-4xl font-bold text-cyan-400 tracking-tight tabular-nums">
-        {count}
+        {formattedCount}
         {stat.suffix}
       </div>
       <div className="mt-3 text-base font-semibold text-slate-100">
@@ -165,7 +174,7 @@ export default function StatsSection() {
         </div>
 
         <p className="mt-8 text-sm text-slate-500">
-          Números baseados em 10 anos de atuação em ambientes corporativos.
+          Números baseados em mais de 10 anos de atuação em ambientes corporativos.
         </p>
       </div>
     </section>
