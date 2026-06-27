@@ -258,6 +258,71 @@ export default function Home() {
         `}</style>
       </section>
 
+      <section className="border-y border-cyan-500/10 bg-gradient-to-b from-slate-950 to-slate-900">
+  <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-6 md:px-10 md:py-20 lg:grid-cols-2 lg:items-center">
+    <FadeIn>
+      <span className="inline-flex rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-cyan-300">
+        Novo Produto Astreon Tech
+      </span>
+
+      <h2 className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl">
+        Pare de perder clientes no WhatsApp pessoal do vendedor.
+      </h2>
+
+      <p className="mt-6 text-lg leading-8 text-slate-300">
+        Centralize conversas, distribua atendimentos por fila, automatize
+        respostas e tenha controle total do relacionamento com seus clientes.
+      </p>
+
+      <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+        <a
+          href="/omnichannel"
+          className="rounded-2xl bg-cyan-500 px-6 py-3 text-center font-semibold text-slate-950 transition hover:bg-cyan-400"
+        >
+          Conhecer a solução
+        </a>
+
+        <a
+          href="https://wa.me/551132302090?text=Olá,%20quero%20agendar%20uma%20demonstração%20da%20Central%20de%20Atendimento%20Omnichannel."
+          target="_blank"
+          rel="noopener noreferrer"
+          className="rounded-2xl border border-cyan-500/40 px-6 py-3 text-center font-semibold text-white transition hover:border-cyan-400 hover:bg-cyan-500/10"
+        >
+          Solicitar demonstração
+        </a>
+      </div>
+    </FadeIn>
+
+    <FadeIn delay={0.15}>
+      <div className="rounded-3xl border border-cyan-500/20 bg-slate-900/80 p-8 shadow-2xl shadow-cyan-950/30">
+        <h3 className="text-xl font-bold text-white">
+          Tudo em um único lugar
+        </h3>
+
+        <div className="mt-8 grid gap-4 sm:grid-cols-2">
+          {[
+            "✓ Múltiplos atendentes",
+            "✓ Filas por setor",
+            "✓ Histórico centralizado",
+            "✓ Automações",
+            "✓ Painel gerencial",
+            "✓ Métricas em tempo real",
+            "✓ Mesmo número de WhatsApp",
+            "✓ Infraestrutura dedicada",
+          ].map((item) => (
+            <div
+              key={item}
+              className="rounded-xl border border-white/10 bg-white/5 p-4 text-sm text-slate-200"
+            >
+              {item}
+            </div>
+          ))}
+        </div>
+      </div>
+    </FadeIn>
+  </div>
+</section>
+
       <StatsSection />
 
       <section className="mx-auto max-w-7xl px-5 py-14 sm:px-6 md:px-10 md:py-16">

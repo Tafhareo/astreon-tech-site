@@ -24,12 +24,12 @@ export default function FadeIn({
     const node = ref.current;
     if (!node) return;
 
-    // Respeita usuários que pediram menos animações no SO
     const prefersReduced = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
+
     if (prefersReduced) {
-      setVisible(true);
+      requestAnimationFrame(() => setVisible(true));
       return;
     }
 

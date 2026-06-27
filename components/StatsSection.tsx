@@ -36,21 +36,14 @@ const stats: Stat[] = [
   },
 ];
 
-/**
- * Animação de contagem com fallback resiliente.
- * - Antes da animação rodar, mostra o valor final (não mais "0")
- * - Quando entra no viewport, reseta para 0 e anima até o valor final
- * - Respeita prefers-reduced-motion
- * - Pausa automaticamente quando aba está em background
- */
 function useCountUp(target: number, duration: number, active: boolean) {
-  // CORREÇÃO PRINCIPAL: começa com o valor final, não com 0
-  // Assim, se JS demorar ou animação falhar, o usuário NUNCA vê "0+"
   const [count, setCount] = useState(target);
   const hasAnimated = useRef(false);
+  const animationRef = useRef<number | null>(null);
 
   useEffect(() => {
     if (!active || hasAnimated.current) return;
+
     hasAnimated.current = true;
 
     const prefersReduced = window.matchMedia(
@@ -58,33 +51,41 @@ function useCountUp(target: number, duration: number, active: boolean) {
     ).matches;
 
     if (prefersReduced) {
-      setCount(target);
-      return;
+      animationRef.current = requestAnimationFrame(() => setCount(target));
+
+      return () => {
+        if (animationRef.current) cancelAnimationFrame(animationRef.current);
+      };
     }
 
-    // Reseta para 0 só na hora de animar (curtíssimo, imperceptível)
-    setCount(0);
+    animationRef.current = requestAnimationFrame(() => {
+      setCount(0);
 
-    let rafId: number;
-    let startTime: number | null = null;
+      let startTime: number | null = null;
 
-    const tick = (now: number) => {
-      if (startTime === null) startTime = now;
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.floor(eased * target));
+      const tick = (now: number) => {
+        if (startTime === null) startTime = now;
 
-      if (progress < 1) {
-        rafId = requestAnimationFrame(tick);
-      } else {
-        setCount(target);
-      }
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+
+        setCount(Math.floor(eased * target));
+
+        if (progress < 1) {
+          animationRef.current = requestAnimationFrame(tick);
+        } else {
+          setCount(target);
+        }
+      };
+
+      animationRef.current = requestAnimationFrame(tick);
+    });
+
+    return () => {
+      if (animationRef.current) cancelAnimationFrame(animationRef.current);
     };
-
-    rafId = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafId);
-  }, [active, target, duration]);
+  }, [active, duration, target]);
 
   return count;
 }
@@ -92,33 +93,24 @@ function useCountUp(target: number, duration: number, active: boolean) {
 function StatCard({
   stat,
   active,
-  index,
 }: {
   stat: Stat;
   active: boolean;
-  index: number;
 }) {
   const count = useCountUp(stat.value, 1800, active);
-
-  // Formatação de número grande com separador de milhar (1.500 em vez de 1500)
   const formattedCount = count.toLocaleString("pt-BR");
 
   return (
-    <div
-      className="rounded-3xl border border-white/10 bg-slate-900/70 p-6 shadow-lg shadow-black/20"
-      style={{
-        opacity: active ? 1 : 1, // Sempre visível desde o SSR
-        transform: active ? "translateY(0)" : "translateY(0)",
-        transition: `opacity 0.6s ease ${index * 0.12}s, transform 0.6s ease ${index * 0.12}s`,
-      }}
-    >
-      <div className="text-4xl font-bold text-cyan-400 tracking-tight tabular-nums">
+    <div className="rounded-3xl border border-white/10 bg-slate-900/70 p-6 shadow-lg shadow-black/20">
+      <div className="text-4xl font-bold tracking-tight text-cyan-400 tabular-nums">
         {formattedCount}
         {stat.suffix}
       </div>
+
       <div className="mt-3 text-base font-semibold text-slate-100">
         {stat.label}
       </div>
+
       <div className="mt-1 text-sm leading-6 text-slate-400">
         {stat.description}
       </div>
@@ -158,9 +150,11 @@ export default function StatsSection() {
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">
             Números que falam por si
           </p>
+
           <h2 className="mt-3 text-2xl font-bold text-white sm:text-3xl md:text-4xl">
             Experiência real aplicada no dia a dia da sua empresa
           </h2>
+
           <p className="mt-4 text-base leading-7 text-slate-300 sm:text-lg">
             Mais de uma década atuando em infraestrutura, segurança e suporte
             para empresas que dependem de tecnologia para operar.
@@ -168,8 +162,8 @@ export default function StatsSection() {
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {stats.map((stat, i) => (
-            <StatCard key={i} stat={stat} active={active} index={i} />
+          {stats.map((stat) => (
+            <StatCard key={stat.label} stat={stat} active={active} />
           ))}
         </div>
 

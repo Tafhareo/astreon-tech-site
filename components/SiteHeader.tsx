@@ -8,7 +8,7 @@ export default function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const whatsappLink =
-    "https://wa.me/551132302090?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Astreon%20Tech%20e%20quero%20solicitar%20um%20diagn%C3%B3stico%20de%20TI.";
+    "https://wa.me/551132302090?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Astreon%20Tech%20e%20quero%20solicitar%20uma%20demonstra%C3%A7%C3%A3o%20da%20Central%20Omnichannel.";
 
   const handleNavigate = () => {
     setMenuOpen(false);
@@ -46,6 +46,10 @@ export default function SiteHeader() {
             Serviços
           </Link>
 
+          <Link href="/omnichannel" scroll={true} onClick={handleNavigate} className="transition hover:text-cyan-600">
+            Omnichannel
+          </Link>
+
           <Link href="/sobre" scroll={true} onClick={handleNavigate} className="transition hover:text-cyan-600">
             Sobre
           </Link>
@@ -54,7 +58,6 @@ export default function SiteHeader() {
             Contato
           </Link>
 
-          {/* Botão Diagnóstico destacado */}
           <a
             href={whatsappLink}
             target="_blank"
@@ -65,7 +68,7 @@ export default function SiteHeader() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-60"></span>
               <span className="relative inline-flex h-2 w-2 rounded-full bg-white"></span>
             </span>
-            Diagnóstico Gratuito
+            Solicitar demonstração
           </a>
         </nav>
 
@@ -105,6 +108,10 @@ export default function SiteHeader() {
               Serviços
             </Link>
 
+            <Link href="/omnichannel" scroll={true} onClick={handleNavigate} className="rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-100">
+              Omnichannel
+            </Link>
+
             <Link href="/sobre" scroll={true} onClick={handleNavigate} className="rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-100">
               Sobre
             </Link>
@@ -120,7 +127,7 @@ export default function SiteHeader() {
               onClick={() => setMenuOpen(false)}
               className="mt-3 rounded-xl bg-cyan-500 px-4 py-3 text-center text-sm font-bold text-white shadow-md shadow-cyan-500/30 hover:bg-cyan-600"
             >
-              Solicitar diagnóstico gratuito
+              Solicitar demonstração
             </a>
           </nav>
         </div>
