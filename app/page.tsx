@@ -2,54 +2,91 @@ import FadeIn from "@/components/FadeIn";
 import StatsSection from "@/components/StatsSection";
 
 export default function Home() {
-  const whatsappLink =
+  const whatsappDiagnostico =
     "https://wa.me/551132302090?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Astreon%20Tech%20e%20quero%20solicitar%20um%20diagn%C3%B3stico%20de%20TI.";
 
-  const services = [
+  const whatsappDemo =
+    "https://wa.me/551132302090?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Astreon%20Tech%20e%20quero%20solicitar%20uma%20demonstra%C3%A7%C3%A3o%20da%20Central%20de%20Atendimento%20Omnichannel.";
+
+  const solutions = [
     {
-      title: "Suporte de TI",
+      eyebrow: "Comunicação",
+      title: "Central de Atendimento Omnichannel",
       description:
-        "Atendimento técnico para empresas que precisam reduzir falhas, lentidão e interrupções na operação.",
+        "Transforme o atendimento da sua empresa em uma operação organizada, com múltiplos atendentes, filas, histórico e indicadores.",
+      href: "/omnichannel",
+      cta: "Conhecer solução",
+      featured: true,
     },
     {
-      title: "Infraestrutura de TI",
+      eyebrow: "Infraestrutura",
+      title: "Ambientes corporativos estáveis",
       description:
-        "Organização de redes, servidores, conectividade e ambiente corporativo para mais estabilidade.",
+        "Redes, servidores, firewall, cloud e conectividade preparados para empresas que não podem parar.",
+      href: "/servicos",
+      cta: "Ver serviços",
+      featured: false,
     },
     {
-      title: "Segurança da Informação",
+      eyebrow: "Segurança",
+      title: "Proteção para dados e acessos",
       description:
-        "Apoio para reduzir riscos, melhorar controles e proteger dados, acessos e sistemas.",
+        "Boas práticas de segurança da informação para reduzir riscos, fortalecer controles e proteger sua operação.",
+      href: "/servicos",
+      cta: "Ver serviços",
+      featured: false,
     },
     {
-      title: "Redes e Firewall",
+      eyebrow: "Serviços gerenciados",
+      title: "Suporte e sustentação contínua",
       description:
-        "Configuração e melhoria de redes, firewall, acessos e proteção perimetral.",
+        "Acompanhamento técnico próximo para manter sua empresa funcionando com estabilidade, performance e previsibilidade.",
+      href: "/contato",
+      cta: "Falar com especialista",
+      featured: false,
+    },
+  ];
+
+  const omnichannelBenefits = [
+    "Múltiplos atendentes no mesmo número",
+    "Filas por setor: comercial, suporte e financeiro",
+    "Histórico centralizado das conversas",
+    "Automações e respostas rápidas",
+    "Painel gerencial com indicadores",
+    "Sem cobrança por mensagem enviada ou recebida",
+  ];
+
+  const whyAstreon = [
+    {
+      title: "Empresa de tecnologia, não apenas suporte",
+      description:
+        "Projetamos, implantamos e sustentamos soluções completas para empresas que precisam de tecnologia confiável.",
     },
     {
-      title: "VICIdial e Telefonia",
+      title: "Infraestrutura própria e dedicada",
       description:
-        "Suporte para operações com discador, telefonia, call center e ambientes de atendimento.",
+        "Ambientes organizados com foco em disponibilidade, segurança, backup e continuidade operacional.",
     },
     {
-      title: "Consultoria e Projetos",
+      title: "Segurança desde a implantação",
       description:
-        "Diagnóstico, planejamento e execução de melhorias em TI com foco em resultado.",
+        "A solução nasce com boas práticas de acesso, documentação, monitoramento e proteção da informação.",
+    },
+    {
+      title: "Suporte humano e próximo",
+      description:
+        "Você fala com quem entende do ambiente e acompanha a operação de ponta a ponta.",
     },
   ];
 
   const testimonials = [
     {
       name: "Tamara Estrela",
-      text: "A empresa foi excepcional na montagem da nossa infraestrutura e configuração de redes, garantindo proteção total com firewalls robustos e máxima estabilidade operacional. Tafharel esteve sempre disponível durante todo o processo de implantação e agora como suporte. Atendimento, agilidade, segurança e responsabilidade. Recomendo esta empresa.",
+      text: "A empresa foi excepcional na montagem da nossa infraestrutura e configuração de redes, garantindo proteção total com firewalls robustos e máxima estabilidade operacional.",
     },
     {
       name: "Alberto Junior",
-      text: "A Astreon Tech elevou nossa operação com VICIdial e Telefonia estáveis, além de uma consultoria estratégica que realmente fez diferença. O suporte de TI é ágil e confiável, garantindo tranquilidade no dia a dia.",
-    },
-    {
-      name: "Melquisedec Paulo Santana",
-      text: "Muito bom, pessoal profissional. Taffarel, sem palavras, muito bom trabalhar com o pessoal. Nota 10.",
+      text: "A Astreon Tech elevou nossa operação com VICIdial e Telefonia estáveis, além de uma consultoria estratégica que realmente fez diferença.",
     },
     {
       name: "Kleber Conforte",
@@ -64,14 +101,6 @@ export default function Home() {
       text: "Melhor atendimento, serviço de qualidade.",
     },
     {
-      name: "Mércia Silva",
-      text: "Serviço de qualidade, atendimento impecável e muita eficiência. Super recomendo!",
-    },
-    {
-      name: "Bruna Estrela",
-      text: "Melhor atendimento, excelência e eficácia sempre.",
-    },
-    {
       name: "Jarrid Lima",
       text: "Muito experiente e confiável.",
     },
@@ -79,310 +108,417 @@ export default function Home() {
 
   return (
     <main className="bg-slate-950 text-white">
-      <section className="border-b border-white/10">
-        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 md:px-10 md:py-24">
+      <section className="relative overflow-hidden border-b border-white/10">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(6,182,212,0.22),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(14,165,233,0.16),transparent_32%)]" />
+
+        <div className="relative mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-6 md:px-10 md:py-24 lg:grid-cols-2 lg:items-center">
           <FadeIn>
-            <div className="max-w-5xl">
-              <span className="mb-4 inline-flex rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-cyan-300">
-                Astreon Tech
+            <span className="inline-flex rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-cyan-300">
+              Astreon Tech
+            </span>
+
+            <h1 className="mt-6 max-w-4xl text-4xl font-bold leading-tight sm:text-5xl md:text-6xl">
+              Tecnologia que conecta, protege e impulsiona empresas.
+            </h1>
+
+            <p className="mt-6 max-w-3xl text-base leading-7 text-slate-300 sm:text-lg">
+              Infraestrutura, Segurança da Informação e uma Central de
+              Atendimento Omnichannel para empresas que precisam de controle,
+              estabilidade e suporte especializado.
+            </p>
+
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+              <a
+                href="#solucoes"
+                className="rounded-2xl bg-cyan-500 px-7 py-3 text-center font-semibold text-slate-950 shadow-lg shadow-cyan-500/20 transition hover:bg-cyan-400"
+              >
+                Conhecer soluções
+              </a>
+
+              <a
+                href={whatsappDiagnostico}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-2xl border border-white/20 px-7 py-3 text-center font-semibold text-slate-200 transition hover:border-cyan-400/60 hover:text-cyan-300"
+              >
+                Solicitar diagnóstico
+              </a>
+            </div>
+
+            <div className="mt-8 flex flex-wrap gap-3 text-xs font-medium text-slate-400">
+              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
+                Infraestrutura
               </span>
+              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
+                Segurança
+              </span>
+              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
+                Comunicação Omnichannel
+              </span>
+              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
+                Suporte contínuo
+              </span>
+            </div>
+          </FadeIn>
 
-              <h1 className="max-w-4xl text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">
-                Ajudamos empresas a evitar falhas, travamentos e problemas de TI
-                que impactam a operação
-              </h1>
+          <FadeIn delay={0.15}>
+            <div className="rounded-[2rem] border border-cyan-400/20 bg-slate-900/80 p-4 shadow-2xl shadow-cyan-950/40 backdrop-blur">
+              <div className="rounded-[1.5rem] border border-white/10 bg-slate-950 p-5">
+                <div className="mb-6 flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-semibold text-white">
+                      Painel Astreon
+                    </p>
+                    <p className="text-xs text-slate-400">
+                      Operação monitorada em tempo real
+                    </p>
+                  </div>
+                  <span className="rounded-full bg-emerald-500/15 px-3 py-1 text-xs font-semibold text-emerald-300">
+                    Online
+                  </span>
+                </div>
 
-              <p className="mt-6 max-w-3xl text-base leading-7 text-slate-300 sm:text-lg">
-                Suporte de TI, infraestrutura, redes, segurança da informação e
-                soluções para empresas que dependem de estabilidade para vender,
-                atender clientes e manter a operação funcionando.
-              </p>
+                <div className="grid gap-4 sm:grid-cols-3">
+                  {[
+                    ["18", "em atendimento"],
+                    ["1m42s", "tempo médio"],
+                    ["147", "finalizados hoje"],
+                  ].map(([value, label]) => (
+                    <div
+                      key={label}
+                      className="rounded-2xl border border-white/10 bg-white/5 p-4"
+                    >
+                      <p className="text-2xl font-bold text-cyan-300">
+                        {value}
+                      </p>
+                      <p className="mt-1 text-xs text-slate-400">{label}</p>
+                    </div>
+                  ))}
+                </div>
 
-              <div className="mt-8">
-                <a
-                  href={whatsappLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block w-full rounded-2xl bg-cyan-500 px-6 py-3 text-center font-semibold text-slate-950 transition hover:bg-cyan-400 sm:w-auto"
-                >
-                  Solicitar diagnóstico no WhatsApp
-                </a>
+                <div className="mt-5 space-y-3">
+                  {[
+                    ["Comercial", "12 conversas na fila"],
+                    ["Suporte", "8 atendimentos ativos"],
+                    ["Financeiro", "5 retornos pendentes"],
+                  ].map(([team, status]) => (
+                    <div
+                      key={team}
+                      className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 p-4"
+                    >
+                      <div>
+                        <p className="text-sm font-semibold text-white">
+                          {team}
+                        </p>
+                        <p className="text-xs text-slate-400">{status}</p>
+                      </div>
+                      <span className="h-2.5 w-2.5 rounded-full bg-cyan-400" />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </FadeIn>
         </div>
       </section>
 
-      <section className="border-b border-white/10 bg-white/5">
-        <div className="mx-auto grid max-w-7xl gap-4 px-5 py-8 sm:px-6 md:grid-cols-3 md:px-10">
-          {[
-            "Atendimento para pequenas e médias empresas",
-            "Foco em estabilidade, segurança e produtividade",
-            "Diagnóstico inicial para entender o cenário",
-          ].map((item) => (
-            <div
-              key={item}
-              className="rounded-2xl border border-white/10 bg-slate-900/70 p-5 text-sm font-medium text-slate-200"
-            >
-              {item}
+      <section id="solucoes" className="border-b border-white/10 bg-white/[0.03]">
+        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 md:px-10 md:py-20">
+          <FadeIn>
+            <div className="mb-10 max-w-3xl">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">
+                Soluções Astreon
+              </p>
+              <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
+                Tecnologia organizada em pilares para sua empresa crescer.
+              </h2>
+              <p className="mt-4 text-base leading-7 text-slate-300 sm:text-lg">
+                Da comunicação com o cliente à infraestrutura e segurança, a
+                Astreon Tech entrega soluções implantadas, documentadas e
+                sustentadas por uma equipe técnica.
+              </p>
             </div>
-          ))}
+
+            <div className="grid gap-6 lg:grid-cols-4">
+              {solutions.map((solution) => (
+                <a
+                  key={solution.title}
+                  href={solution.href}
+                  className={`group rounded-3xl border p-6 transition hover:-translate-y-1 hover:shadow-2xl ${
+                    solution.featured
+                      ? "border-cyan-400/30 bg-cyan-500/10 shadow-cyan-950/30"
+                      : "border-white/10 bg-slate-900/70 shadow-black/20"
+                  }`}
+                >
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">
+                    {solution.eyebrow}
+                  </p>
+                  <h3 className="mt-4 text-xl font-bold text-white">
+                    {solution.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-6 text-slate-300">
+                    {solution.description}
+                  </p>
+                  <p className="mt-6 text-sm font-semibold text-cyan-300 transition group-hover:text-cyan-200">
+                    {solution.cta} →
+                  </p>
+                </a>
+              ))}
+            </div>
+          </FadeIn>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-5 py-14 sm:px-6 md:px-10 md:py-16">
+      <section className="relative overflow-hidden border-b border-white/10">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.14),transparent_42%)]" />
+        <div className="relative mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-6 md:px-10 md:py-20 lg:grid-cols-2 lg:items-center">
+          <FadeIn>
+            <span className="inline-flex rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-cyan-300">
+              Produto em destaque
+            </span>
+
+            <h2 className="mt-6 text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">
+              Central de Atendimento Omnichannel Astreon.
+            </h2>
+
+            <p className="mt-5 text-lg leading-8 text-slate-300">
+              Pare de perder clientes no WhatsApp pessoal do vendedor.
+              Centralize conversas, distribua atendimentos por fila, preserve o
+              histórico e acompanhe indicadores da operação em tempo real.
+            </p>
+
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+              <a
+                href="/omnichannel"
+                className="rounded-2xl bg-cyan-500 px-7 py-3 text-center font-semibold text-slate-950 shadow-lg shadow-cyan-500/20 transition hover:bg-cyan-400"
+              >
+                Conhecer a solução
+              </a>
+
+              <a
+                href={whatsappDemo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-2xl border border-white/20 px-7 py-3 text-center font-semibold text-slate-200 transition hover:border-cyan-400/60 hover:text-cyan-300"
+              >
+                Solicitar demonstração
+              </a>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={0.15}>
+            <div className="rounded-[2rem] border border-white/10 bg-slate-900/80 p-6 shadow-2xl shadow-black/30">
+              <div className="grid gap-4 sm:grid-cols-2">
+                {omnichannelBenefits.map((item) => (
+                  <div
+                    key={item}
+                    className="rounded-2xl border border-white/10 bg-white/5 p-5"
+                  >
+                    <div className="mb-4 h-2 w-2 rounded-full bg-cyan-400" />
+                    <p className="text-sm font-medium leading-6 text-slate-200">
+                      {item}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      <section className="border-b border-white/10 bg-white/[0.03]">
+        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 md:px-10 md:py-20">
+          <FadeIn>
+            <div className="mb-10 max-w-3xl">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">
+                Antes e depois
+              </p>
+              <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
+                O atendimento deixa de depender de pessoas isoladas e passa a
+                pertencer à empresa.
+              </h2>
+            </div>
+
+            <div className="grid gap-6 lg:grid-cols-2">
+              <div className="rounded-3xl border border-red-400/20 bg-red-500/5 p-6">
+                <h3 className="text-xl font-bold text-red-200">Antes</h3>
+                <div className="mt-6 space-y-4 text-sm text-slate-300">
+                  {[
+                    "Cada vendedor atende pelo próprio WhatsApp.",
+                    "O histórico fica perdido no celular do colaborador.",
+                    "A gestão não sabe quantos clientes foram atendidos.",
+                    "Não existe fila, prioridade ou padrão de resposta.",
+                  ].map((item) => (
+                    <p key={item}>✕ {item}</p>
+                  ))}
+                </div>
+              </div>
+
+              <div className="rounded-3xl border border-emerald-400/20 bg-emerald-500/5 p-6">
+                <h3 className="text-xl font-bold text-emerald-200">Depois</h3>
+                <div className="mt-6 space-y-4 text-sm text-slate-300">
+                  {[
+                    "A empresa atende por uma central profissional.",
+                    "O histórico permanece mesmo com troca de colaborador.",
+                    "Filas e setores organizam o fluxo de atendimento.",
+                    "Indicadores ajudam a acompanhar produtividade e qualidade.",
+                  ].map((item) => (
+                    <p key={item}>✓ {item}</p>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 md:px-10 md:py-20">
         <FadeIn>
           <div className="mb-10 max-w-3xl">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">
-              Serviços
+              Por que a Astreon Tech
             </p>
-            <h2 className="mt-3 text-2xl font-bold sm:text-3xl md:text-4xl">
-              Soluções para manter sua empresa funcionando com mais segurança
+            <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
+              Tecnologia com implantação, segurança e suporte contínuo.
             </h2>
-            <p className="mt-4 text-base leading-7 text-slate-300 sm:text-lg">
-              Atuamos nos pontos que mais impactam o dia a dia da empresa:
-              suporte, infraestrutura, segurança, redes, telefonia e projetos.
-            </p>
           </div>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((service) => (
+          <div className="grid gap-6 sm:grid-cols-2">
+            {whyAstreon.map((item) => (
               <div
-                key={service.title}
-                className="flex h-full flex-col rounded-3xl border border-white/10 bg-white/5 p-6 shadow-lg shadow-black/20"
+                key={item.title}
+                className="rounded-3xl border border-white/10 bg-white/5 p-6"
               >
-                <h3 className="text-lg font-semibold">{service.title}</h3>
-
-                <p className="mt-3 flex-1 text-sm leading-6 text-slate-300">
-                  {service.description}
+                <div className="mb-4 h-1 w-12 rounded-full bg-cyan-400" />
+                <h3 className="text-lg font-semibold text-white">
+                  {item.title}
+                </h3>
+                <p className="mt-3 text-sm leading-6 text-slate-300">
+                  {item.description}
                 </p>
-
-                <a
-                  href={`https://wa.me/551132302090?text=${encodeURIComponent(
-                    `Olá, vi no site o serviço de ${service.title} e quero entender como a Astreon Tech pode me ajudar.`
-                  )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-6 text-sm font-semibold text-cyan-300 transition hover:text-cyan-200"
-                >
-                  Falar sobre este serviço
-                </a>
               </div>
             ))}
           </div>
         </FadeIn>
       </section>
 
-      <section className="overflow-hidden border-y border-white/10 bg-white/5">
-        <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6 md:px-10 md:py-16">
+      <StatsSection />
+
+      <section className="border-y border-white/10 bg-white/[0.03]">
+        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 md:px-10 md:py-20">
+          <FadeIn>
+            <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">
+                  Processo de implantação
+                </p>
+                <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
+                  Não entregamos apenas acesso. Entregamos a solução funcionando.
+                </h2>
+                <p className="mt-4 text-base leading-7 text-slate-300 sm:text-lg">
+                  Cada projeto começa com diagnóstico, passa por implantação
+                  orientada e segue com acompanhamento técnico para manter a
+                  operação estável.
+                </p>
+              </div>
+
+              <div className="grid gap-4">
+                {[
+                  "Diagnóstico do cenário atual",
+                  "Planejamento da solução ideal",
+                  "Implantação e configuração",
+                  "Treinamento da equipe",
+                  "Suporte e evolução contínua",
+                ].map((item, index) => (
+                  <div
+                    key={item}
+                    className="flex gap-4 rounded-2xl border border-white/10 bg-slate-900/70 p-5"
+                  >
+                    <span className="text-sm font-bold text-cyan-300">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <p className="text-sm font-medium text-slate-100">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      <section className="overflow-hidden border-b border-white/10">
+        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 md:px-10 md:py-20">
           <FadeIn>
             <div className="mb-10 max-w-3xl">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">
                 Prova social
               </p>
-              <h2 className="mt-3 text-2xl font-bold sm:text-3xl md:text-4xl">
-                O que dizem sobre nosso trabalho
+              <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
+                Clientes que já confiaram na Astreon Tech.
               </h2>
               <p className="mt-4 text-base leading-7 text-slate-300 sm:text-lg">
-                Avaliações reais do Google de clientes que já transformaram sua
-                operação com a Astreon Tech.
+                Avaliações reais de clientes que já contaram com a Astreon para
+                melhorar infraestrutura, atendimento e operação.
               </p>
             </div>
 
-            <div className="relative w-full overflow-hidden">
-              <div className="flex w-max gap-6 testimonial-scroll">
-                {[...testimonials, ...testimonials].map((item, index) => (
-                  <div
-                    key={`${item.name}-${index}`}
-                    className="flex min-h-[260px] w-[300px] flex-shrink-0 flex-col rounded-3xl border border-white/10 bg-slate-900/70 p-6 sm:w-[360px]"
-                  >
-                    {/* Estrelas + ícone aspas */}
-                    <div className="flex items-center justify-between">
-                      <div className="text-base text-yellow-300">★★★★★</div>
-                      <svg
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        className="opacity-20"
-                      >
-                        <path
-                          d="M11 7H7C5.9 7 5 7.9 5 9v4c0 1.1.9 2 2 2h2v2c0 1.1-.9 2-2 2H6v2h1c2.2 0 4-1.8 4-4V7zm8 0h-4c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h2v2c0 1.1-.9 2-2 2h-1v2h1c2.2 0 4-1.8 4-4V7z"
-                          fill="white"
-                        />
-                      </svg>
-                    </div>
-
-                    <p className="mt-4 flex-1 whitespace-normal text-sm leading-7 text-slate-300">
-                      {item.text}
-                    </p>
-
-                    {/* Separador + nome */}
-                    <div className="mt-5 border-t border-white/10 pt-4">
-                      <p className="text-sm font-semibold text-cyan-300">
-                        {item.name}
-                      </p>
-                      <p className="mt-0.5 text-xs text-slate-500">
-                        Cliente Astreon Tech
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="mt-8">
-              <a
-                href={whatsappLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block w-full rounded-2xl border border-cyan-400 px-6 py-3 text-center text-sm font-semibold text-cyan-300 transition hover:bg-cyan-400/10 sm:w-auto"
-              >
-                Também quero melhorar minha TI
-              </a>
-            </div>
-          </FadeIn>
-        </div>
-
-        <style>{`
-          .testimonial-scroll {
-            animation: testimonial-scroll 50s linear infinite;
-          }
-          .testimonial-scroll:hover {
-            animation-play-state: paused;
-          }
-          @keyframes testimonial-scroll {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
-          }
-        `}</style>
-      </section>
-
-      <section className="border-y border-cyan-500/10 bg-gradient-to-b from-slate-950 to-slate-900">
-  <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-6 md:px-10 md:py-20 lg:grid-cols-2 lg:items-center">
-    <FadeIn>
-      <span className="inline-flex rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-cyan-300">
-        Novo Produto Astreon Tech
-      </span>
-
-      <h2 className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl">
-        Pare de perder clientes no WhatsApp pessoal do vendedor.
-      </h2>
-
-      <p className="mt-6 text-lg leading-8 text-slate-300">
-        Centralize conversas, distribua atendimentos por fila, automatize
-        respostas e tenha controle total do relacionamento com seus clientes.
-      </p>
-
-      <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-        <a
-          href="/omnichannel"
-          className="rounded-2xl bg-cyan-500 px-6 py-3 text-center font-semibold text-slate-950 transition hover:bg-cyan-400"
-        >
-          Conhecer a solução
-        </a>
-
-        <a
-          href="https://wa.me/551132302090?text=Olá,%20quero%20agendar%20uma%20demonstração%20da%20Central%20de%20Atendimento%20Omnichannel."
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rounded-2xl border border-cyan-500/40 px-6 py-3 text-center font-semibold text-white transition hover:border-cyan-400 hover:bg-cyan-500/10"
-        >
-          Solicitar demonstração
-        </a>
-      </div>
-    </FadeIn>
-
-    <FadeIn delay={0.15}>
-      <div className="rounded-3xl border border-cyan-500/20 bg-slate-900/80 p-8 shadow-2xl shadow-cyan-950/30">
-        <h3 className="text-xl font-bold text-white">
-          Tudo em um único lugar
-        </h3>
-
-        <div className="mt-8 grid gap-4 sm:grid-cols-2">
-          {[
-            "✓ Múltiplos atendentes",
-            "✓ Filas por setor",
-            "✓ Histórico centralizado",
-            "✓ Automações",
-            "✓ Painel gerencial",
-            "✓ Métricas em tempo real",
-            "✓ Mesmo número de WhatsApp",
-            "✓ Infraestrutura dedicada",
-          ].map((item) => (
-            <div
-              key={item}
-              className="rounded-xl border border-white/10 bg-white/5 p-4 text-sm text-slate-200"
-            >
-              {item}
-            </div>
-          ))}
-        </div>
-      </div>
-    </FadeIn>
-  </div>
-</section>
-
-      <StatsSection />
-
-      <section className="mx-auto max-w-7xl px-5 py-14 sm:px-6 md:px-10 md:py-16">
-        <FadeIn>
-          <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">
-                Ideal para
-              </p>
-              <h2 className="mt-3 text-2xl font-bold sm:text-3xl md:text-4xl">
-                Empresas que dependem de tecnologia para operar todos os dias
-              </h2>
-              <p className="mt-4 text-base leading-7 text-slate-300 sm:text-lg">
-                Atendemos negócios que precisam de suporte confiável, ambiente
-                estável e mais controle sobre infraestrutura e segurança.
-              </p>
-            </div>
-
-            <div className="grid gap-4">
-              {[
-                "Empresas de crédito e operações comerciais",
-                "Call centers e operações com telefonia",
-                "Escritórios, clínicas e empresas administrativas",
-                "Pequenas e médias empresas em crescimento",
-              ].map((item) => (
+            <div className="grid gap-6 md:grid-cols-3">
+              {testimonials.map((item) => (
                 <div
-                  key={item}
-                  className="rounded-2xl border border-white/10 bg-white/5 p-5"
+                  key={item.name}
+                  className="rounded-3xl border border-white/10 bg-slate-900/70 p-6"
                 >
-                  <p className="font-medium text-slate-100">{item}</p>
+                  <div className="text-sm text-yellow-300">★★★★★</div>
+                  <p className="mt-4 text-sm leading-7 text-slate-300">
+                    {item.text}
+                  </p>
+                  <div className="mt-6 border-t border-white/10 pt-4">
+                    <p className="text-sm font-semibold text-cyan-300">
+                      {item.name}
+                    </p>
+                    <p className="text-xs text-slate-500">
+                      Cliente Astreon Tech
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
-          </div>
-        </FadeIn>
+          </FadeIn>
+        </div>
       </section>
 
-      <section className="border-t border-white/10 bg-cyan-500/10">
-        <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6 md:px-10 md:py-16">
+      <section className="bg-cyan-500/10">
+        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 md:px-10 md:py-20">
           <FadeIn>
-            <div className="rounded-3xl border border-cyan-400/20 bg-slate-900/80 p-6 text-center sm:p-8 md:p-10">
-              <h2 className="text-2xl font-bold sm:text-3xl md:text-4xl">
-                Sua empresa está enfrentando falhas, lentidão ou falta de
-                organização na TI?
+            <div className="rounded-[2rem] border border-cyan-400/20 bg-slate-900/90 p-8 text-center shadow-2xl shadow-cyan-950/30 md:p-12">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">
+                Vamos conversar?
+              </p>
+              <h2 className="mx-auto mt-4 max-w-4xl text-3xl font-bold sm:text-4xl md:text-5xl">
+                Transforme tecnologia em estabilidade, segurança e crescimento.
               </h2>
 
-              <p className="mx-auto mt-4 max-w-3xl text-base leading-7 text-slate-300 sm:text-lg">
-                Solicite um diagnóstico inicial pelo WhatsApp e entenda quais
-                pontos podem ser melhorados para aumentar estabilidade, segurança
-                e produtividade.
+              <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
+                Fale com a Astreon Tech e entenda como organizar sua
+                infraestrutura, proteger sua empresa e profissionalizar o
+                atendimento ao cliente.
               </p>
 
-              <div className="mt-8">
+              <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
                 <a
-                  href={whatsappLink}
+                  href={whatsappDiagnostico}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block w-full rounded-2xl bg-cyan-500 px-6 py-3 text-center font-semibold text-slate-950 transition hover:bg-cyan-400 sm:w-auto"
+                  className="rounded-2xl bg-cyan-500 px-8 py-3 text-center font-semibold text-slate-950 transition hover:bg-cyan-400"
                 >
-                  Solicitar diagnóstico no WhatsApp
+                  Solicitar diagnóstico
+                </a>
+
+                <a
+                  href="/omnichannel"
+                  className="rounded-2xl border border-white/20 px-8 py-3 text-center font-semibold text-slate-200 transition hover:border-cyan-400/60 hover:text-cyan-300"
+                >
+                  Conhecer Central Omnichannel
                 </a>
               </div>
             </div>
