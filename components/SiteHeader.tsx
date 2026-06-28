@@ -3,29 +3,64 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import {
+  ChevronDown,
+  Cloud,
+  Headphones,
+  Menu,
+  MessageCircle,
+  Server,
+  ShieldCheck,
+  X,
+} from "lucide-react";
+
+const whatsappLink =
+  "https://wa.me/551132302090?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Astreon%20Tech%20e%20quero%20solicitar%20uma%20demonstra%C3%A7%C3%A3o.";
+
+const solutions = [
+  {
+    title: "Central Omnichannel",
+    description: "Atendimento com filas, histórico, métricas e múltiplos atendentes.",
+    href: "/omnichannel",
+    icon: MessageCircle,
+  },
+  {
+    title: "Infraestrutura",
+    description: "Redes, servidores, firewall, cloud e ambientes corporativos.",
+    href: "/servicos",
+    icon: Server,
+  },
+  {
+    title: "Segurança",
+    description: "Proteção de dados, boas práticas, acessos e governança.",
+    href: "/servicos",
+    icon: ShieldCheck,
+  },
+  {
+    title: "Cloud & Serviços",
+    description: "Sustentação, suporte, monitoramento e projetos sob demanda.",
+    href: "/servicos",
+    icon: Cloud,
+  },
+];
 
 export default function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [solutionsOpen, setSolutionsOpen] = useState(false);
 
-  const whatsappLink =
-    "https://wa.me/551132302090?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Astreon%20Tech%20e%20quero%20solicitar%20uma%20demonstra%C3%A7%C3%A3o%20da%20Central%20Omnichannel.";
-
-  const handleNavigate = () => {
+  const closeMenus = () => {
     setMenuOpen(false);
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }, 50);
+    setSolutionsOpen(false);
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-sm">
+    <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/95 backdrop-blur-xl">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-6 md:h-24 md:px-10">
         <Link
           href="/"
-          scroll={true}
           className="flex items-center"
           aria-label="Ir para a página inicial da Astreon Tech"
-          onClick={handleNavigate}
+          onClick={closeMenus}
         >
           <Image
             src="/images/logo-astreon.png"
@@ -37,86 +72,180 @@ export default function SiteHeader() {
           />
         </Link>
 
-        <nav className="hidden items-center gap-8 text-sm font-semibold text-slate-700 md:flex">
-          <Link href="/" scroll={true} onClick={handleNavigate} className="transition hover:text-cyan-600">
+        <nav className="hidden items-center gap-7 text-sm font-semibold text-slate-700 lg:flex">
+          <Link href="/" className="transition hover:text-cyan-600">
             Início
           </Link>
 
-          <Link href="/servicos" scroll={true} onClick={handleNavigate} className="transition hover:text-cyan-600">
+          <div
+            className="relative"
+            onMouseEnter={() => setSolutionsOpen(true)}
+            onMouseLeave={() => setSolutionsOpen(false)}
+          >
+            <button
+              type="button"
+              className="inline-flex items-center gap-1 transition hover:text-cyan-600"
+              onClick={() => setSolutionsOpen((current) => !current)}
+            >
+              Soluções
+              <ChevronDown className="h-4 w-4" />
+            </button>
+
+            {solutionsOpen && (
+              <div className="absolute left-1/2 top-full w-[620px] -translate-x-1/2 pt-5">
+                <div className="rounded-3xl border border-slate-200 bg-white p-4 shadow-2xl shadow-slate-900/15">
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    {solutions.map((item) => {
+                      const Icon = item.icon;
+
+                      return (
+                        <Link
+                          key={item.title}
+                          href={item.href}
+                          onClick={closeMenus}
+                          className="group rounded-2xl border border-slate-100 p-4 transition hover:border-cyan-200 hover:bg-cyan-50"
+                        >
+                          <div className="flex gap-3">
+                            <div className="flex h-10 w-10 flex-none items-center justify-center rounded-xl bg-slate-900 text-cyan-300 transition group-hover:bg-cyan-500 group-hover:text-white">
+                              <Icon className="h-5 w-5" />
+                            </div>
+                            <div>
+                              <p className="font-bold text-slate-900">
+                                {item.title}
+                              </p>
+                              <p className="mt-1 text-xs leading-5 text-slate-500">
+                                {item.description}
+                              </p>
+                            </div>
+                          </div>
+                        </Link>
+                      );
+                    })}
+                  </div>
+
+                  <div className="mt-3 rounded-2xl bg-slate-950 p-4 text-white">
+                    <div className="flex items-center justify-between gap-4">
+                      <div>
+                        <p className="text-sm font-bold">
+                          Central de Atendimento Omnichannel
+                        </p>
+                        <p className="mt-1 text-xs text-slate-400">
+                          Organize WhatsApp, equipe, filas e indicadores em uma central profissional.
+                        </p>
+                      </div>
+                      <Link
+                        href="/omnichannel"
+                        onClick={closeMenus}
+                        className="rounded-xl bg-cyan-400 px-4 py-2 text-xs font-bold text-slate-950 transition hover:bg-cyan-300"
+                      >
+                        Conhecer
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <Link href="/servicos" className="transition hover:text-cyan-600">
             Serviços
           </Link>
 
-          <Link href="/omnichannel" scroll={true} onClick={handleNavigate} className="transition hover:text-cyan-600">
-            Omnichannel
+          <Link href="/sobre" className="transition hover:text-cyan-600">
+            Quem Somos
           </Link>
 
-          <Link href="/sobre" scroll={true} onClick={handleNavigate} className="transition hover:text-cyan-600">
-            Sobre
-          </Link>
-
-          <Link href="/contato" scroll={true} onClick={handleNavigate} className="transition hover:text-cyan-600">
+          <Link href="/contato" className="transition hover:text-cyan-600">
             Contato
           </Link>
+        </nav>
 
+        <div className="hidden items-center gap-3 lg:flex">
           <a
             href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="relative inline-flex items-center gap-2 rounded-xl bg-cyan-500 px-5 py-2.5 text-sm font-bold text-white shadow-md shadow-cyan-500/30 transition hover:bg-cyan-600 hover:shadow-cyan-600/30"
+            className="inline-flex items-center gap-2 rounded-2xl bg-cyan-500 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-cyan-500/25 transition hover:bg-cyan-600"
           >
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-60"></span>
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-white"></span>
-            </span>
+            <Headphones className="h-4 w-4" />
             Solicitar demonstração
           </a>
-        </nav>
+        </div>
 
         <button
           type="button"
-          onClick={() => setMenuOpen((prev) => !prev)}
-          className="inline-flex items-center justify-center rounded-xl border border-slate-300 p-2 text-slate-700 transition hover:bg-slate-100 md:hidden"
+          onClick={() => setMenuOpen((current) => !current)}
+          className="inline-flex items-center justify-center rounded-xl border border-slate-300 p-2 text-slate-700 transition hover:bg-slate-100 lg:hidden"
           aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
           aria-expanded={menuOpen}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth="2"
-            aria-hidden="true"
-          >
-            {menuOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-            )}
-          </svg>
+          {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>
 
       {menuOpen && (
-        <div className="border-t border-slate-200 bg-white shadow-lg md:hidden">
+        <div className="border-t border-slate-200 bg-white shadow-xl lg:hidden">
           <nav className="mx-auto flex max-w-7xl flex-col px-5 py-4 sm:px-6">
-            <Link href="/" scroll={true} onClick={handleNavigate} className="rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-100">
+            <Link
+              href="/"
+              onClick={closeMenus}
+              className="rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-100"
+            >
               Início
             </Link>
 
-            <Link href="/servicos" scroll={true} onClick={handleNavigate} className="rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-100">
+            <div className="px-4 pb-2 pt-4 text-xs font-bold uppercase tracking-[0.2em] text-cyan-600">
+              Soluções
+            </div>
+
+            <div className="grid gap-2">
+              {solutions.map((item) => {
+                const Icon = item.icon;
+
+                return (
+                  <Link
+                    key={item.title}
+                    href={item.href}
+                    onClick={closeMenus}
+                    className="flex gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-4"
+                  >
+                    <div className="flex h-10 w-10 flex-none items-center justify-center rounded-xl bg-slate-950 text-cyan-300">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-bold text-slate-900">
+                        {item.title}
+                      </p>
+                      <p className="mt-1 text-xs leading-5 text-slate-500">
+                        {item.description}
+                      </p>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+
+            <Link
+              href="/servicos"
+              onClick={closeMenus}
+              className="mt-3 rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-100"
+            >
               Serviços
             </Link>
 
-            <Link href="/omnichannel" scroll={true} onClick={handleNavigate} className="rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-100">
-              Omnichannel
+            <Link
+              href="/sobre"
+              onClick={closeMenus}
+              className="rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-100"
+            >
+              Quem Somos
             </Link>
 
-            <Link href="/sobre" scroll={true} onClick={handleNavigate} className="rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-100">
-              Sobre
-            </Link>
-
-            <Link href="/contato" scroll={true} onClick={handleNavigate} className="rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-100">
+            <Link
+              href="/contato"
+              onClick={closeMenus}
+              className="rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-100"
+            >
               Contato
             </Link>
 
@@ -124,8 +253,8 @@ export default function SiteHeader() {
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => setMenuOpen(false)}
-              className="mt-3 rounded-xl bg-cyan-500 px-4 py-3 text-center text-sm font-bold text-white shadow-md shadow-cyan-500/30 hover:bg-cyan-600"
+              onClick={closeMenus}
+              className="mt-4 rounded-2xl bg-cyan-500 px-4 py-3 text-center text-sm font-bold text-white shadow-md shadow-cyan-500/30 hover:bg-cyan-600"
             >
               Solicitar demonstração
             </a>
