@@ -15,7 +15,7 @@ const solutions = [
     title: "Ambientes corporativos estáveis",
     description:
       "Redes, servidores, firewall, cloud e conectividade preparados para empresas que não podem parar.",
-    href: "/servicos",
+    href: "/servicos#infraestrutura",
     cta: "Ver serviços",
     featured: false,
   },
@@ -24,7 +24,7 @@ const solutions = [
     title: "Proteção para dados e acessos",
     description:
       "Boas práticas de segurança da informação para reduzir riscos, fortalecer controles e proteger sua operação.",
-    href: "/servicos",
+    href: "/servicos#seguranca",
     cta: "Ver serviços",
     featured: false,
   },
@@ -33,7 +33,7 @@ const solutions = [
     title: "Suporte e sustentação contínua",
     description:
       "Acompanhamento técnico próximo para manter sua empresa funcionando com estabilidade, performance e previsibilidade.",
-    href: "/contato",
+    href: "/servicos#suporte",
     cta: "Falar com especialista",
     featured: false,
   },
@@ -58,12 +58,12 @@ export default function HomeSolutions() {
             </p>
           </div>
 
-          <div className="grid gap-6 lg:grid-cols-4">
+          <div className="grid items-stretch gap-6 lg:grid-cols-4">
             {solutions.map((solution) => (
               <a
                 key={solution.title}
                 href={solution.href}
-                className={`group rounded-3xl border p-6 transition hover:-translate-y-1 hover:shadow-2xl ${
+                className={`group flex h-full min-h-[320px] flex-col rounded-3xl border p-6 transition hover:-translate-y-1 hover:shadow-2xl ${
                   solution.featured
                     ? "border-cyan-400/30 bg-cyan-500/10 shadow-cyan-950/30"
                     : "border-white/10 bg-slate-900/70 shadow-black/20"
@@ -72,12 +72,15 @@ export default function HomeSolutions() {
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">
                   {solution.eyebrow}
                 </p>
-                <h3 className="mt-4 text-xl font-bold text-white">
+
+                <h3 className="mt-4 min-h-[64px] text-xl font-bold leading-tight text-white">
                   {solution.title}
                 </h3>
-                <p className="mt-3 text-sm leading-6 text-slate-300">
+
+                <p className="mt-4 flex-1 text-sm leading-7 text-slate-300">
                   {solution.description}
                 </p>
+
                 <p className="mt-6 text-sm font-semibold text-cyan-300 transition group-hover:text-cyan-200">
                   {solution.cta} →
                 </p>
