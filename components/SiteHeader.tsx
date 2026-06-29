@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
 import {
   ChevronDown,
   Cloud,
@@ -21,30 +22,33 @@ const solutions = [
   {
     title: "Central Omnichannel",
     description: "Atendimento com filas, histórico, métricas e múltiplos atendentes.",
-    href: "/servicos#solucoes-servicos",
+    href: "/servicos#omnichannel",
     icon: MessageCircle,
   },
   {
     title: "Infraestrutura",
     description: "Redes, servidores, firewall, cloud e ambientes corporativos.",
-    href: "/servicos#solucoes-servicos",
+    href: "/servicos#infraestrutura",
     icon: Server,
   },
   {
     title: "Segurança",
     description: "Proteção de dados, boas práticas, acessos e governança.",
-    href: "/servicos#solucoes-servicos",
+    href: "/servicos#seguranca",
     icon: ShieldCheck,
   },
   {
     title: "Cloud & Serviços",
     description: "Sustentação, suporte, monitoramento e projetos sob demanda.",
-    href: "/servicos#solucoes-servicos",
+    href: "/servicos#cloud",
     icon: Cloud,
   },
 ];
 
 export default function SiteHeader() {
+  const router = useRouter();
+  const pathname = usePathname();
+
   const [menuOpen, setMenuOpen] = useState(false);
   const [solutionsOpen, setSolutionsOpen] = useState(false);
 
@@ -52,6 +56,57 @@ export default function SiteHeader() {
     setMenuOpen(false);
     setSolutionsOpen(false);
   };
+
+  const scrollToHash = (hash: string) => {
+    const element = document.getElementById(hash);
+
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
+  const handleSolutionClick = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    event.preventDefault();
+
+    const [path, hash] = href.split("#");
+
+    closeMenus();
+
+    if (!hash) {
+      router.push(path);
+      return;
+    }
+
+    if (pathname === path) {
+      window.history.pushState(null, "", href);
+      setTimeout(() => scrollToHash(hash), 80);
+      return;
+    }
+
+    sessionStorage.setItem("astreon-scroll-target", hash);
+    router.push(path);
+  };
+
+  useEffect(() => {
+    const target = sessionStorage.getItem("astreon-scroll-target");
+
+    if (target) {
+      sessionStorage.removeItem("astreon-scroll-target");
+      setTimeout(() => scrollToHash(target), 300);
+      return;
+    }
+
+    if (window.location.hash) {
+      const hash = window.location.hash.replace("#", "");
+      setTimeout(() => scrollToHash(hash), 300);
+    }
+  }, [pathname]);
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/95 backdrop-blur-xl">
@@ -99,10 +154,12 @@ export default function SiteHeader() {
                       const Icon = item.icon;
 
                       return (
-                        <Link
+                        <a
                           key={item.title}
                           href={item.href}
-                          onClick={closeMenus}
+                          onClick={(event) =>
+                            handleSolutionClick(event, item.href)
+                          }
                           className="group rounded-2xl border border-slate-100 p-4 transition hover:border-cyan-200 hover:bg-cyan-50"
                         >
                           <div className="flex gap-3">
@@ -118,7 +175,7 @@ export default function SiteHeader() {
                               </p>
                             </div>
                           </div>
-                        </Link>
+                        </a>
                       );
                     })}
                   </div>
@@ -202,10 +259,10 @@ export default function SiteHeader() {
                 const Icon = item.icon;
 
                 return (
-                  <Link
+                  <a
                     key={item.title}
                     href={item.href}
-                    onClick={closeMenus}
+                    onClick={(event) => handleSolutionClick(event, item.href)}
                     className="flex gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-4"
                   >
                     <div className="flex h-10 w-10 flex-none items-center justify-center rounded-xl bg-slate-950 text-cyan-300">
@@ -219,7 +276,7 @@ export default function SiteHeader() {
                         {item.description}
                       </p>
                     </div>
-                  </Link>
+                  </a>
                 );
               })}
             </div>
