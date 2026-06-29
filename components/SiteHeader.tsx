@@ -22,7 +22,7 @@ const solutions = [
   {
     title: "Central Omnichannel",
     description: "Atendimento com filas, histórico, métricas e múltiplos atendentes.",
-    href: "/servicos#omnichannel",
+    href: "/omnichannel",
     icon: MessageCircle,
   },
   {
