@@ -67,7 +67,10 @@ const services = [
 
 export default function ServicesGrid() {
   return (
-    <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 md:px-10 md:py-20">
+    <section
+      id="solucoes-servicos"
+      className="mx-auto max-w-7xl scroll-mt-32 px-5 py-16 sm:px-6 md:px-10 md:py-20"
+    >
       <FadeIn>
         <div className="mb-10 max-w-3xl">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">

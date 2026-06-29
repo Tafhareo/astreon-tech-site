@@ -21,25 +21,25 @@ const solutions = [
   {
     title: "Central Omnichannel",
     description: "Atendimento com filas, histórico, métricas e múltiplos atendentes.",
-    href: "/servicos#omnichannel",
+    href: "/servicos#solucoes-servicos",
     icon: MessageCircle,
   },
   {
     title: "Infraestrutura",
     description: "Redes, servidores, firewall, cloud e ambientes corporativos.",
-    href: "/servicos#infraestrutura",
+    href: "/servicos#solucoes-servicos",
     icon: Server,
   },
   {
     title: "Segurança",
     description: "Proteção de dados, boas práticas, acessos e governança.",
-    href: "/servicos#seguranca",
+    href: "/servicos#solucoes-servicos",
     icon: ShieldCheck,
   },
   {
     title: "Cloud & Serviços",
     description: "Sustentação, suporte, monitoramento e projetos sob demanda.",
-    href: "/servicos#cloud",
+    href: "/servicos#solucoes-servicos",
     icon: Cloud,
   },
 ];
