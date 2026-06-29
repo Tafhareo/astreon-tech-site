@@ -12,9 +12,9 @@ export default function Home() {
   return (
     <main className="bg-slate-950 text-white">
       <HomeHero />
-      <HomeSolutions />
       <HomeOmnichannel />
       <HomeProductLeadForm />
+      <HomeSolutions />
       <HomeWhyAstreon />
       <StatsSection />
       <HomeImplementationProcess />

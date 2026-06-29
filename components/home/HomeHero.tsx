@@ -1,72 +1,89 @@
 import FadeIn from "@/components/FadeIn";
+import { ArrowRight, BarChart3, CheckCircle2 } from "lucide-react";
 
-const whatsappDiagnostico =
-  "https://wa.me/551132302090?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Astreon%20Tech%20e%20quero%20solicitar%20um%20diagn%C3%B3stico%20de%20TI.";
+const whatsappDemo =
+  "https://wa.me/551132302090?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Astreon%20Tech%20e%20quero%20solicitar%20uma%20demonstra%C3%A7%C3%A3o.";
+
+const highlights = [
+  "WhatsApp centralizado",
+  "Múltiplos atendentes",
+  "Filas e histórico",
+  "Dashboard gerencial",
+];
 
 export default function HomeHero() {
   return (
     <section className="relative overflow-hidden border-b border-white/10">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(6,182,212,0.22),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(16,185,129,0.14),transparent_35%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(6,182,212,0.22),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(16,185,129,0.16),transparent_36%)]" />
 
-      <div className="relative mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-6 md:px-10 md:py-24 lg:grid-cols-2 lg:items-center">
+      <div className="relative mx-auto grid max-w-7xl gap-10 px-5 py-14 sm:px-6 md:px-10 md:py-20 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
         <FadeIn>
           <span className="inline-flex rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-cyan-300">
             Astreon Tech
           </span>
 
-          <h1 className="mt-6 max-w-4xl text-4xl font-bold leading-tight sm:text-5xl md:text-6xl">
-            Tecnologia que conecta, protege e impulsiona empresas.
+          <h1 className="mt-5 text-4xl font-bold leading-tight sm:text-5xl md:text-6xl">
+            Transforme o atendimento da sua empresa em uma operação profissional.
           </h1>
 
-          <p className="mt-6 max-w-3xl text-base leading-7 text-slate-300 sm:text-lg">
-            Infraestrutura, Segurança da Informação e uma Central de
-            Atendimento Omnichannel para empresas que precisam de controle,
-            estabilidade e suporte especializado.
+          <p className="mt-6 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
+            Centralize WhatsApp, equipes, filas, histórico, automações e
+            indicadores com a Central Omnichannel Astreon, sem deixar de contar
+            com infraestrutura, segurança e suporte especializado.
           </p>
 
           <div className="mt-8 flex flex-col gap-4 sm:flex-row">
             <a
-              href="#solucoes"
-              className="rounded-2xl bg-cyan-500 px-7 py-3 text-center font-semibold text-slate-950 shadow-lg shadow-cyan-500/20 transition hover:bg-cyan-400"
+              href="/omnichannel"
+              className="inline-flex items-center justify-center gap-2 rounded-2xl bg-cyan-500 px-7 py-3 font-semibold text-slate-950 transition hover:bg-cyan-400"
             >
-              Conhecer soluções
+              Conhecer solução
+              <ArrowRight className="h-4 w-4" />
             </a>
 
             <a
-              href={whatsappDiagnostico}
+              href={whatsappDemo}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-2xl border border-white/20 px-7 py-3 text-center font-semibold text-slate-200 transition hover:border-cyan-400/60 hover:text-cyan-300"
+              className="inline-flex items-center justify-center rounded-2xl border border-white/20 px-7 py-3 font-semibold text-slate-200 transition hover:border-cyan-400/50 hover:text-cyan-300"
             >
-              Solicitar diagnóstico
+              Solicitar demonstração
             </a>
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-3 text-xs font-medium text-slate-400">
-            {["Infraestrutura", "Segurança", "Comunicação Omnichannel", "Suporte contínuo"].map((item) => (
-              <span key={item} className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
-                {item}
-              </span>
-            ))}
+          <div className="mt-8 flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-widest text-slate-400">
+            <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1">
+              Omnichannel
+            </span>
+            <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1">
+              Infraestrutura
+            </span>
+            <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1">
+              Segurança
+            </span>
+            <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1">
+              Suporte
+            </span>
           </div>
         </FadeIn>
 
         <FadeIn delay={0.15}>
-          <div className="rounded-[2rem] border border-cyan-400/20 bg-slate-900/80 p-4 shadow-2xl shadow-cyan-950/40 backdrop-blur">
+          <div className="rounded-[2rem] border border-cyan-400/20 bg-slate-900/80 p-5 shadow-2xl shadow-cyan-950/30">
             <div className="rounded-[1.5rem] border border-white/10 bg-slate-950 p-5">
-              <div className="mb-6 flex items-center justify-between">
+              <div className="mb-5 flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-semibold text-white">Painel Astreon</p>
+                  <p className="text-sm font-bold text-white">Painel Astreon</p>
                   <p className="text-xs text-slate-400">
-                    Operação monitorada em tempo real
+                    Atendimento monitorado em tempo real
                   </p>
                 </div>
+
                 <span className="rounded-full bg-emerald-500/15 px-3 py-1 text-xs font-semibold text-emerald-300">
                   Online
                 </span>
               </div>
 
-              <div className="grid gap-4 sm:grid-cols-3">
+              <div className="grid gap-3 sm:grid-cols-3">
                 {[
                   ["18", "em atendimento"],
                   ["1m42s", "tempo médio"],
@@ -74,7 +91,7 @@ export default function HomeHero() {
                 ].map(([value, label]) => (
                   <div
                     key={label}
-                    className="rounded-2xl border border-white/10 bg-white/5 p-4"
+                    className="rounded-2xl border border-white/10 bg-white/[0.04] p-4"
                   >
                     <p className="text-2xl font-bold text-cyan-300">{value}</p>
                     <p className="mt-1 text-xs text-slate-400">{label}</p>
@@ -82,23 +99,27 @@ export default function HomeHero() {
                 ))}
               </div>
 
-              <div className="mt-5 space-y-3">
-                {[
-                  ["Comercial", "12 conversas na fila"],
-                  ["Suporte", "8 atendimentos ativos"],
-                  ["Financeiro", "5 retornos pendentes"],
-                ].map(([team, status]) => (
+              <div className="mt-5 grid gap-3">
+                {highlights.map((item) => (
                   <div
-                    key={team}
-                    className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 p-4"
+                    key={item}
+                    className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] p-4"
                   >
-                    <div>
-                      <p className="text-sm font-semibold text-white">{team}</p>
-                      <p className="text-xs text-slate-400">{status}</p>
-                    </div>
-                    <span className="h-2.5 w-2.5 rounded-full bg-cyan-400" />
+                    <CheckCircle2 className="h-5 w-5 flex-none text-emerald-300" />
+                    <span className="text-sm font-semibold text-slate-200">
+                      {item}
+                    </span>
                   </div>
                 ))}
+              </div>
+
+              <div className="mt-5 rounded-2xl border border-cyan-400/20 bg-cyan-400/10 p-4">
+                <div className="flex items-center gap-3">
+                  <BarChart3 className="h-5 w-5 text-cyan-300" />
+                  <p className="text-sm font-semibold text-slate-200">
+                    Gestão com dados, histórico e controle da operação.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
